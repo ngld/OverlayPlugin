@@ -809,34 +809,44 @@
     },
     "OverlayPlugin.Updater/CefMissingTab": {
         "btnOpenManual.Text": {
-            "en": "Extract Downloaded File"
+            "en": "Extract Downloaded File",
+            "zh-CN": "提取已下载文件"
         },
         "btnStartAuto.Text": {
-            "en": "Download and unpack the missing files"
+            "en": "Download and unpack the missing files",
+            "zh-CN": "下载并解压缩丢失的文件"
         },
         "label1.Text": {
-            "en": "Some files which are required for OverlayPlugin to function are missing. This is normal if you just installed OverlayPlugin or recently updated it. The files are fairly big (> 150 MiB) and change rarely (at most once per month). To make updates easier for everyone, these files are split into a separate download."
+            "en": "Some files which are required for OverlayPlugin to function are missing. This is normal if you just installed OverlayPlugin or recently updated it. The files are fairly big (> 150 MiB) and change rarely (at most once per month). To make updates easier for everyone, these files are split into a separate download.",
+            "zh-CN": "丢失了某些OverlayPlugin所必须的关键文件。如果您刚刚安装OverlayPlugin或刚刚进行了更新，这个情况是正常的。这些文件很大（> 150 MiB）并且很少需要更改（每月最多一次）。为了使所有人都能轻松地进行更新，这些文件被拆分为单独下载。"
         },
         "label2.Text": {
-            "en": "Use this if the automated installation doesn't work for you."
+            "en": "Use this if the automated installation doesn't work for you.",
+            "zh-CN": "如果自动安装对您不起作用，请使用此选项。"
         },
         "label3.Text": {
-            "en": "Download the following file and then open it using the button on the bottom:"
+            "en": "Download the following file and then open it using the button on the bottom:",
+            "zh-CN": "下载以下文件，然后使用底部的按钮将其打开："
         },
         "label4.Text": {
-            "en": "Click the button below and let OverlayPlugin handle everything automatically. This should work for most people."
+            "en": "Click the button below and let OverlayPlugin handle everything automatically. This should work for most people.",
+            "zh-CN": "点击下面的按钮，让OverlayPlugin自动处理所有内容。 这应该适合于大多数人。"
         },
         "label5.Text": {
-            "en": "If this doesn't work, take a look at the other tab."
+            "en": "If this doesn't work, take a look at the other tab.",
+            "zh-CN": "如果这对您不起作用，请查看另一个选项卡。"
         },
         "lnkManual.Text": {
-            "en": "Please wait..."
+            "en": "Please wait..."，
+            "zh-CN": "请稍候..."
         },
         "tabPage1.Text": {
-            "en": "Automated Installation"
+            "en": "Automated Installation",
+            "zh-CN": "自动安装"
         },
         "tabPage2.Text": {
-            "en": "Manual Installation"
+            "en": "Manual Installation",
+            "zh-CN": "手动安装"
         }
     },
     "OverlayPlugin.Updater/ProgressDisplay": {
@@ -853,7 +863,7 @@
         "label.Text": {
             "en": "Please wait...",
             "fr-FR": "Veuillez patienter ...",
-            "zh-CN": "请稍后..."
+            "zh-CN": "请稍候..."
         }
     },
     "OverlayPlugin.Updater/Resources": {
