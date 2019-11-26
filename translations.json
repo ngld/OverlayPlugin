@@ -69,7 +69,7 @@
             "en": "Automatically send error reports to the developer",
             "fr-FR": "Envoyer automatiquement les rapports d'erreur",
             "ja-JP": "エラーを自動で報告する",
-            "ko-KR": "자동으로 오류 보고",
+            "ko-KR": "자동으로 개발자에게 오류 보고",
             "zh-CN": "自动向开发者发送错误报告"
         },
         "cbHideOverlaysDuringCutscene.Text": {
