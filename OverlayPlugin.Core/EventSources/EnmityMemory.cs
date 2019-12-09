@@ -272,6 +272,9 @@ namespace RainbowMage.OverlayPlugin.EventSources
             var seen = new HashSet<uint>();
             var mychar = GetSelfCombatant();
 
+            if (mychar == null) 
+                return result;
+
             int sz = 8;
             byte[] source = memory.GetByteArray(charmapAddress, sz * numMemoryCombatants);
             if (source == null || source.Length == 0)
