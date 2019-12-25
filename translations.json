@@ -337,7 +337,7 @@
             "fr-FR": "Bloquer l'overlay",
             "ja-JP": "移動とリサイズを制限する",
             "ko-KR": "위치 잠금",
-            "zh-CN": "锁定悬浮窗[某些悬浮窗(如cactbot)需要锁定之后方可生效]"
+            "zh-CN": "锁定悬浮窗[某些悬浮窗(如cactbot)锁定后方可生效]"
         }
     },
     "OverlayPlugin.Core/Overlays/LogParseConfigPanel": {
@@ -421,7 +421,7 @@
             "fr-FR": "Bloquer l'overlay",
             "ja-JP": "移動とリサイズを制限する",
             "ko-KR": "위치 잠금",
-            "zh-CN": "锁定悬浮窗[某些悬浮窗(如cactbot)需要锁定之后方可生效]"
+            "zh-CN": "锁定悬浮窗[某些悬浮窗(如cactbot)锁定后方可生效]"
         }
     },
     "OverlayPlugin.Core/Overlays/MiniParseConfigPanel": {
@@ -566,7 +566,7 @@
             "fr-FR": "Bloquer l'overlay",
             "ja-JP": "移動とリサイズを制限する",
             "ko-KR": "위치 잠금",
-            "zh-CN": "锁定悬浮窗[某些悬浮窗(如cactbot)需要锁定之后方可生效]"
+            "zh-CN": "锁定悬浮窗[某些悬浮窗(如cactbot)锁定后方可生效]"
         },
         "lblNoFocus.Text": {
             "en": "No Focus",
@@ -629,7 +629,7 @@
             "fr-FR": "Bloquer l'overlay",
             "ja-JP": "移動とリサイズを制限する",
             "ko-KR": "위치 잠금",
-            "zh-CN": "锁定悬浮窗[某些悬浮窗(如cactbot)需要锁定之后方可生效]"
+            "zh-CN": "锁定悬浮窗[某些悬浮窗(如cactbot)锁定后方可生效]"
         },
         "label4.Text": {
             "en": "Hotkey Type",
