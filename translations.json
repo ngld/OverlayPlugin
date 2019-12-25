@@ -133,7 +133,7 @@
             "en": "For most overlays you have to select MiniParse here. Yes, even Cactbot needs the MiniParse type.\n\nLabel allows you to display static text or HTML on your screen. Useful for notes and rotation reminders.\nSpellTimer displays ACT's built in spell timers and has nothing to do with SpecialSpellTimers / SPESPE.\n",
             "ja-JP": "ほとんどのオーバーレイはMiniParseを選択してください。CactbotもMiniParseを使用してください。\n\nLabelはディスプレイにテキストやHTMLを表示する際に使用します。メモ用途に適しています。\nSpellTimerはACT内蔵のスペルタイマーを表示します。SpecialSpellTimers(スペスペ)用ではありません。",
             "ko-KR": "대부분의 오버레이는 MiniParse 유형을 선택합니다. cactbot 오버레이도 마찬가지로 MiniParse 유형을 필요로 합니다.\n\nLabel 유형을 사용하면 오버레이에 텍스트나 HTML을 표시할 수 있습니다. 메모나 반복 알림 표시에 유용합니다.\nSpellTimer는 ACT에 내장된 스펠 타이머를 표시하며, Hojoring의 스페스페와는 아무런 관련이 없습니다.\n",
-            "zh-CN": "对于大多数悬浮窗，您必须在此处选择MiniParse。 是的，即使Cactbot也需要MiniParse类型。\n\nLabel允许您在屏幕上显示静态文本或HTML。对于笔记和技能循环提醒很实用。\nSpellTimer显示ACT内置的技能冷却计时器，与Hojoring的SpecialSpellTimers或SPESPE无关。\n"
+            "zh-CN": "对于大多数悬浮窗，您必须在此处选择[数据统计]。 是的，即使Cactbot也需要[数据统计]类型。\n\n[标签]允许您在屏幕上显示静态文本或HTML。对于笔记和技能循环提醒很实用。\n[技能冷却]显示ACT内置的技能冷却计时器，与Hojoring的SpecialSpellTimers或SPESPE无关。\n"
         }
     },
     "OverlayPlugin.Core/Controls/WSConfigPanel": {
@@ -337,7 +337,7 @@
             "fr-FR": "Bloquer l'overlay",
             "ja-JP": "移動とリサイズを制限する",
             "ko-KR": "위치 잠금",
-            "zh-CN": "锁定悬浮窗"
+            "zh-CN": "锁定悬浮窗[某些悬浮窗(如cactbot)需要锁定之后方可生效]"
         }
     },
     "OverlayPlugin.Core/Overlays/LogParseConfigPanel": {
@@ -421,7 +421,7 @@
             "fr-FR": "Bloquer l'overlay",
             "ja-JP": "移動とリサイズを制限する",
             "ko-KR": "위치 잠금",
-            "zh-CN": "锁定悬浮窗"
+            "zh-CN": "锁定悬浮窗[某些悬浮窗(如cactbot)需要锁定之后方可生效]"
         }
     },
     "OverlayPlugin.Core/Overlays/MiniParseConfigPanel": {
@@ -566,7 +566,7 @@
             "fr-FR": "Bloquer l'overlay",
             "ja-JP": "移動とリサイズを制限する",
             "ko-KR": "위치 잠금",
-            "zh-CN": "锁定悬浮窗"
+            "zh-CN": "锁定悬浮窗[某些悬浮窗(如cactbot)需要锁定之后方可生效]"
         },
         "lblNoFocus.Text": {
             "en": "No Focus",
@@ -629,7 +629,7 @@
             "fr-FR": "Bloquer l'overlay",
             "ja-JP": "移動とリサイズを制限する",
             "ko-KR": "위치 잠금",
-            "zh-CN": "锁定悬浮窗"
+            "zh-CN": "锁定悬浮窗[某些悬浮窗(如cactbot)需要锁定之后方可生效]"
         },
         "label4.Text": {
             "en": "Hotkey Type",
