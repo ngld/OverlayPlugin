@@ -135,21 +135,19 @@ namespace RainbowMage.HtmlRenderer
         #region Render logic
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (this.surfaceBuffer != null)
+            if (this.surfaceBuffer == null)
             {
-                lock (surfaceLock)
-                {
-                    e.Graphics.DrawImage(surfaceBuffer, 0, 0);
-
-                    if (popupVisible && popupBuffer != null)
-                    {
-                        e.Graphics.DrawImage(popupBuffer, popupPosition);
-                    }
-                }
+                return;
             }
-            else
+
+            lock (surfaceLock)
             {
-                e.Graphics.DrawString("No buffer!", new Font(FontFamily.GenericSansSerif, 8), new SolidBrush(Color.Black), 10, 10);
+                e.Graphics.DrawImage(surfaceBuffer, 0, 0);
+
+                if (popupVisible && popupBuffer != null)
+                {
+                    e.Graphics.DrawImage(popupBuffer, popupPosition);
+                }
             }
         }
 
