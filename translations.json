@@ -31,6 +31,7 @@
         },
         "buttonRename.Text": {
             "en": "Rename",
+            "ko-KR": "이름 바꾸기",
             "zh-CN": "重命名"
         },
         "checkBoxFollowLog.Text": {
@@ -539,16 +540,19 @@
         "hotkeyColAction.HeaderText": {
             "en": "Action",
             "fr-FR": "Action",
+            "ko-KR": "행동",
             "zh-CN": "行为"
         },
         "hotkeyColEnabled.HeaderText": {
             "en": "Enabled",
             "fr-FR": "Activé",
+            "ko-KR": "활성화",
             "zh-CN": "启用"
         },
         "hotkeyColHotkey.HeaderText": {
             "en": "Hotkey",
             "fr-FR": "Raccourci",
+            "ko-KR": "단축키",
             "zh-CN": "快捷键"
         },
         "label1.Text": {
@@ -562,6 +566,7 @@
             "en": "If an overlay is locked, its location becomes fixed and you won't be able to move it until you unlock it again.",
             "fr-FR": "Si un overlay est bloqué, sa position devient fixe et vous ne pourrez pas le bouger avant de l'avoir débloqué",
             "ja-JP": "オーバーレイをロックすると、サイズと位置が固定されます。",
+            "ko-KR": "오버레이 위치가 잠겨있으면, 위치 고정을 풀기 전까지는 오버레이를 움직일 수 없습니다.",
             "zh-CN": "如果某悬浮窗被锁定，其位置将固定不变，只有将其再次解锁才能移动。\n某些悬浮窗(如cactbot)锁定后方可正常工作。"
         },
         "label11.Text": {
@@ -582,6 +587,7 @@
             "en": "Mute overlay when hidden",
             "fr-FR": "Aucun son si caché",
             "ja-JP": "オーバーレイが隠れているときに\nミュートにする",
+            "ko-KR": "오버레이가 숨겨진 상태일 때 음소거 하기",
             "zh-CN": "隐藏时使悬浮窗静音"
         },
         "label15.Text": {
@@ -969,10 +975,12 @@
             "#comment": "This is used as the temporary name for the preview overlay.",
             "en": "Preview",
             "fr-FR": "Aperçu",
+            "ko-KR": "미리 보기",
             "zh-CN": "预览"
         },
         "PresetUsesUnsupportedType": {
-            "en": "Preset {0} uses unsupported type {1}!"
+            "en": "Preset {0} uses unsupported type {1}!",
+            "ko-KR": "{0} 프리셋은 지원하지 않는 형식 {1}을 사용합니다!"
         },
         "PromptSelectOverlayType": {
             "en": "Please select overlay type.",
