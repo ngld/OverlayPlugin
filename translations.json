@@ -98,7 +98,8 @@
             "zh-CN": "自动检查更新"
         },
         "lblGithub.Text": {
-            "en": "GitHub Repo:"
+            "en": "GitHub Repo:",
+            "zh-CN": "GitHub项目："
         },
         "lnkGithubRepo.Text": {
             "en": "https://github.com/ngld/OverlayPlugin"
@@ -137,7 +138,8 @@
             "zh-CN": "预设"
         },
         "lblPresetDescription.Text": {
-            "en": "Once you have selected a preset above, you'll see a preview.\nYou can move the preview around by dragging it with your mouse.\nTo resize the preview, drag the bottom right corner.\n\nIf you want to use an overlay that isn't listed, select the Custom preset and the correct overlay type.\n\nIf you want to add new presets, send a PR to the GitHub repo (you can find a link on the General tab)."
+            "en": "Once you have selected a preset above, you'll see a preview.\nYou can move the preview around by dragging it with your mouse.\nTo resize the preview, drag the bottom right corner.\n\nIf you want to use an overlay that isn't listed, select the Custom preset and the correct overlay type.\n\nIf you want to add new presets, send a PR to the GitHub repo (you can find a link on the General tab).",
+            "zh-CN": "选择上方的预设后，您将看到其预览。\n您可以通过使用鼠标拖动来移动预览。\n要调整预览的大小，请拖动其右下角。\n\n如果要使用未列出的悬浮窗，请选择“自订”预设和正确的悬浮窗种类。\n\n如果要添加新的预设，请发送PR到GitHub项目（可以在“通用”选项卡中找到链接）。"
         },
         "lblType.Text": {
             "en": "Type",
@@ -1142,11 +1144,13 @@
     "OverlayPlugin.Updater/Resources": {
         "ActUpdateCheckFailed": {
             "#comment": "The placeholder here is the project being updated (i.e. OverlayPlugin or Cactbot)",
-            "en": "Update check for {0} through ACT failed, retrying with GitHub API."
+            "en": "Update check for {0} through ACT failed, retrying with GitHub API.",
+            "zh-CN": "通过ACT检查{0}的更新失败，正在使用GitHub API重试。"
         },
         "ActUpdateException": {
             "#comment": "The first placeholder here is the project being updated (i.e. OverlayPlugin or Cactbot)",
-            "en": "ACT Update check for {0} failed, falling back to GitHub API: {1}"
+            "en": "ACT Update check for {0} failed, falling back to GitHub API: {1}",
+            "zh-CN": "{0}的ACT检查更新失败，正在回退至GitHub API: {1}"
         },
         "CreatingTempDirFailed": {
             "en": "Failed to create or empty the temporary directory \"{0}\": {1}",
