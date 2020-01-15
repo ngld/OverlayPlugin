@@ -117,4 +117,160 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActUpdateCheckFailed" xml:space="preserve">
+    <value>ACTでの {0} のアップデートチェックが失敗しました. GitHub API をリトライします.</value>
+  </data>
+  <data name="ActUpdateException" xml:space="preserve">
+    <value>ACTでの {0} のアップデートチェックが失敗しました. GitHub API に戻ります: {1}</value>
+  </data>
+  <data name="CreatingTempDirFailed" xml:space="preserve">
+    <value>一時フォルダの作成に失敗しました "{0}": {1}</value>
+  </data>
+  <data name="DownloadFailedContentLengthMissing" xml:space="preserve">
+    <value>ダウンロードに失敗しました! ファイルサイズが不明です (Content-Length が見つかりませんでした).</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>{0} エラー</value>
+  </data>
+  <data name="Exception" xml:space="preserve">
+    <value>失敗: {0}</value>
+  </data>
+  <data name="LaunchingInstallerFailed" xml:space="preserve">
+    <value>インストーラーの起動に失敗しました: {0}</value>
+  </data>
+  <data name="LogAbortedByUser" xml:space="preserve">
+    <value>中断されました.</value>
+  </data>
+  <data name="LogBackingUpOldFiles" xml:space="preserve">
+    <value>古いファイルをバックアップ中...</value>
+  </data>
+  <data name="LogCleaningUp" xml:space="preserve">
+    <value>クリーンアップ中...</value>
+  </data>
+  <data name="LogDeletingTempFiles" xml:space="preserve">
+    <value>一時フォルダを削除中...</value>
+  </data>
+  <data name="LogDone" xml:space="preserve">
+    <value>完了.</value>
+  </data>
+  <data name="LogDownloadFailed" xml:space="preserve">
+    <value>ダウンロード失敗: {0}</value>
+  </data>
+  <data name="LogDownloading" xml:space="preserve">
+    <value>ダウンロード中 "{0}" into {1}...</value>
+  </data>
+  <data name="LogDownloadInterrupted" xml:space="preserve">
+    <value>ダウンロードが中断されました: {0}</value>
+  </data>
+  <data name="LogExtractingFiles" xml:space="preserve">
+    <value>ファイルを展開中...</value>
+  </data>
+  <data name="LogExtractionAbortedByUser" xml:space="preserve">
+    <value>ファイルの展開が中断されました.</value>
+  </data>
+  <data name="LogFailedReplaceDirectory" xml:space="preserve">
+    <value>古いフォルダの置き換えに失敗しました: {0}</value>
+  </data>
+  <data name="LogFailedToDelete" xml:space="preserve">
+    <value>削除に失敗 {0}: {1}</value>
+  </data>
+  <data name="LogInstallerFailed" xml:space="preserve">
+    <value>エラー: インストーラーが正常に終了しませんでした.</value>
+  </data>
+  <data name="LogInstallerWaiting" xml:space="preserve">
+    <value>インストーラーの終了を待機中...</value>
+  </data>
+  <data name="LogLaunchingInstaller" xml:space="preserve">
+    <value>インストーラーを起動中...</value>
+  </data>
+  <data name="LogMovingDirectory" xml:space="preserve">
+    <value>フォルダを移動中...</value>
+  </data>
+  <data name="LogOpeningArchive" xml:space="preserve">
+    <value>アーカイブを開いています...</value>
+  </data>
+  <data name="LogOverwritingOldFiles" xml:space="preserve">
+    <value>古いファイルを上書き中...</value>
+  </data>
+  <data name="LogOverwritingOldFilesFailed" xml:space="preserve">
+    <value>古いファイルの上書きに失敗しました: {0}
+WARNING: プラグインは非常に不安定な状態です!!
+ACTを再起動した際にプラグインが読み込まれない可能性があります. 再度アップデートの確認をするか再インストールをして下さい. </value>
+  </data>
+  <data name="LogRemovingOldBackup" xml:space="preserve">
+    <value>古いバックアップフォルダを削除中...</value>
+  </data>
+  <data name="LogRestoringBackup" xml:space="preserve">
+    <value>バックアップを復元中...</value>
+  </data>
+  <data name="LogResumingDownload" xml:space="preserve">
+    <value>ダウンロードを再開中...</value>
+  </data>
+  <data name="LogRetry" xml:space="preserve">
+    <value>リトライ中...</value>
+  </data>
+  <data name="LogRetryAfter1s" xml:space="preserve">
+    <value>1秒後にリトライします.</value>
+  </data>
+  <data name="MsvcrtFailed" xml:space="preserve">
+    <value>MSVCRT のインストールに失敗しました.</value>
+  </data>
+  <data name="MsvcrtMissing" xml:space="preserve">
+    <value>MS Visual C++ Redistributable for Visual Studio 2019 が見つかりません.
+OverlayPlugin にはこれが必要です. 今すぐインストールしますか?</value>
+  </data>
+  <data name="OutOfRetries" xml:space="preserve">
+    <value>リトライを終了.</value>
+  </data>
+  <data name="SharpCompressOutdatedError" xml:space="preserve">
+    <value>現在の SharpCompress のバージョンが古いです!
+SharpCompress を使用する他のプラグインの前に、必ずOverlayPluginをロードしてください.</value>
+  </data>
+  <data name="StatusCancelled" xml:space="preserve">
+    <value>キャンセルされました!</value>
+  </data>
+  <data name="StatusCancelling" xml:space="preserve">
+    <value>キャンセル中...</value>
+  </data>
+  <data name="StatusDone" xml:space="preserve">
+    <value>[{0}/{1}]: 完了.</value>
+  </data>
+  <data name="StatusDownloadStarted" xml:space="preserve">
+    <value>[{0}/{1}]: ダウンロードを開始中...</value>
+  </data>
+  <data name="StatusError" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="StatusLaunchingInstaller" xml:space="preserve">
+    <value>[{0}/{1}]: インストーラーを起動中...</value>
+  </data>
+  <data name="StatusPreparingExtraction" xml:space="preserve">
+    <value>[{0}/{1}]: 展開の準備中...</value>
+  </data>
+  <data name="UpdateAlreadyLatest" xml:space="preserve">
+    <value>現在のバージョンが最新です.</value>
+  </data>
+  <data name="UpdateCefDlFailed" xml:space="preserve">
+    <value>CEF のダウロードに失敗しました. 詳細は OverlayPlugin.dll のタブを確認して下さい.</value>
+  </data>
+  <data name="UpdateCheckException" xml:space="preserve">
+    <value>アップデートチェックに失敗:
+{0}</value>
+  </data>
+  <data name="UpdateCheckTitle" xml:space="preserve">
+    <value>{0} アップデートの確認</value>
+  </data>
+  <data name="UpdateFailedError" xml:space="preserve">
+    <value>プラグインのアップデートに失敗しました. 次にACTを起動してもプラグインは読み込まれません. リトライしますか?</value>
+  </data>
+  <data name="UpdateParseVersionError" xml:space="preserve">
+    <value>バージョンの確認に失敗:
+{0}</value>
+  </data>
+  <data name="UpdateSuccess" xml:space="preserve">
+    <value>アップデートが成功しました. 新しいバージョンを使用するにはACTを再起動して下さい.</value>
+  </data>
+  <data name="UpdateTitle" xml:space="preserve">
+    <value>{0} アップデート</value>
+  </data>
 </root>

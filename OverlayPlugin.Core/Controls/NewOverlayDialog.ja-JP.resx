@@ -142,4 +142,16 @@ SpellTimerはACT内蔵のスペルタイマーを表示します。SpecialSpellT
   <data name="$this.Text" xml:space="preserve">
     <value>新しいオーバーレイ</value>
   </data>
+  <data name="lblPreset.Text" xml:space="preserve">
+    <value>プリセット</value>
+  </data>
+  <data name="lblPresetDescription.Text" xml:space="preserve">
+    <value>上記のプリセットを選択するとプレビューが表示されます。
+プレビューはマウスでドラッグして移動できます。まらサイズを変更するには右下の端をドラッグします。
+
+リストに無いオーバーレイを使用する場合は Custom を選択して適切なタイプを選択して下さい。
+
+新しいプリセットを追加するには GitHub で Pull Request を送って下さい。
+(リンクは General タブにあります。)</value>
+  </data>
 </root>
