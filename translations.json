@@ -980,7 +980,8 @@
         },
         "PresetUsesUnsupportedType": {
             "en": "Preset {0} uses unsupported type {1}!",
-            "ko-KR": "{0} 프리셋은 지원하지 않는 형식 {1}을 사용합니다!"
+            "ko-KR": "{0} 프리셋은 지원하지 않는 형식 {1}을 사용합니다!",
+            "zh-CN": "预设{0}使用不受支持的类型{1}！"
         },
         "PromptSelectOverlayType": {
             "en": "Please select overlay type.",
