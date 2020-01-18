@@ -39,6 +39,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
         private const string FileChangedEvent = "FileChanged";
         private const string OnlineStatusChangedEvent = "OnlineStatusChanged";
         private const string PartyChangedEvent = "PartyChanged";
+        private const string CombatantDataEvent = "CombatantDataEvent";
 
         // Event Source
 
@@ -54,6 +55,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
                 FileChangedEvent,
                 LogLineEvent,
                 ImportedLogLinesEvent,
+                CombatantDataEvent,
             });
 
             // These events need to deliver cached values to new subscribers.
@@ -154,6 +156,99 @@ namespace RainbowMage.OverlayPlugin.EventSources
             }));
         }
 
+        private readonly List<string> DefaultCombatantFields = new List<string>
+        {
+            "CurrentWorldID",
+            "WorldID",
+            "WorldName",
+            "BNpcID",
+            "BNpcNameID",
+            "PartyType",
+            "ID",
+            "OwnerID",
+            "type",
+            "Job",
+            "Level",
+            "Name",
+            "CurrentHP",
+            "MaxHP",
+            "CurrentMP",
+            "MaxMP",
+            "PosX",
+            "PosY",
+            "PosZ",
+            "Heading"
+        };
+
+        // https://github.com/SapphireServer/Sapphire/blob/master/src/common/Common.h
+        private enum CombatantType : byte
+        {
+            None = 0x00,
+            Player = 0x01,
+            BattleNpc = 0x02,
+            EventNpc = 0x03,
+            Treasure = 0x04,
+            Aetheryte = 0x05,
+            GatheringPoint = 0x06,
+            EventObj = 0x07,
+            MountType = 0x08,
+            Companion = 0x09, // this probably actually means minion
+            Retainer = 0x0A,
+            Area = 0x0B,
+            Housing = 0x0C,
+            Cutscene = 0x0D,
+            CardStand = 0x0E,
+        };
+
+        private List<System.Reflection.PropertyInfo> CachedCombatantPropertyInfos
+            = new List<System.Reflection.PropertyInfo>();
+
+        private void DispatchCombatantEvent()
+        {
+            var combatants = FFXIVRepository.GetCombatants();
+            if (combatants == null)
+                return;
+
+            var perfTimer = Stopwatch.StartNew();
+
+            if (CachedCombatantPropertyInfos.Count == 0)
+            {
+                foreach (var propName in DefaultCombatantFields)
+                {
+                    CachedCombatantPropertyInfos.Add(
+                        typeof(FFXIV_ACT_Plugin.Common.Models.Combatant).GetProperty(propName));
+                }
+            }
+
+            var detail = new List<Dictionary<string, object>>();
+
+            foreach (var c in combatants)
+            {
+                // Filter uninitialized entities
+                if (c.ID == 0) continue;
+
+                // Filter combatant types that aren't useful in battle
+                if (c.type != (byte)CombatantType.Player
+                    && c.type != (byte)CombatantType.BattleNpc) continue;
+
+                Dictionary<string, object> ci = new Dictionary<string, object>();
+                foreach (var propInfo in CachedCombatantPropertyInfos)
+                {
+                    ci.Add(propInfo.Name, propInfo.GetValue(c));
+                }
+                detail.Add(ci);
+
+            }
+            DispatchEvent(JObject.FromObject(new
+            {
+                type = CombatantDataEvent,
+                detail,
+            }));
+
+            perfTimer.Stop();
+            logger.Log(LogLevel.Info, $"[PERF] DispatchCombatantEvent = {perfTimer.ElapsedMilliseconds}ms");
+        }
+
         struct PartyMember
         {
             // Player id in hex (for ease in matching logs).
@@ -225,6 +320,13 @@ namespace RainbowMage.OverlayPlugin.EventSources
 
         protected override void Update()
         {
+            // CombatantDataEvent
+            if (CheckIsActReady() && HasSubscriber(CombatantDataEvent))
+            {
+                DispatchCombatantEvent();
+            }
+
+            // CombatDataEvent & ImportedLogLinesEvent
             var importing = ActGlobals.oFormImportProgress?.Visible == true;
 
             if (CheckIsActReady() && (!importing || this.Config.UpdateDpsDuringImport))
