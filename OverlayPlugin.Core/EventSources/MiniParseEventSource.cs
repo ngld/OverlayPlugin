@@ -217,8 +217,15 @@ namespace RainbowMage.OverlayPlugin.EventSources
             {
                 foreach (var propName in DefaultCombatantFields)
                 {
-                    CachedCombatantPropertyInfos.Add(
-                        typeof(FFXIV_ACT_Plugin.Common.Models.Combatant).GetProperty(propName));
+                    try
+                    {
+                        var pi = typeof(FFXIV_ACT_Plugin.Common.Models.Combatant).GetProperty(propName);
+                        CachedCombatantPropertyInfos.Add(pi);
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        logger.Log(LogLevel.Warning, $"Property {propName} not found on Combatant");
+                    }
                 }
             }
 
@@ -239,8 +246,8 @@ namespace RainbowMage.OverlayPlugin.EventSources
                     ci.Add(propInfo.Name, propInfo.GetValue(c));
                 }
                 detail.Add(ci);
-
             }
+
             DispatchEvent(JObject.FromObject(new
             {
                 type = CombatantDataEvent,
