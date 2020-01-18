@@ -75,6 +75,35 @@ namespace RainbowMage.OverlayPlugin.EventSources
                 });
             });
 
+            RegisterEventHandler("GetCombatantProperties", (_) =>
+                JObject.FromObject(new { CombatantProperties }));
+
+            RegisterEventHandler("AddCombatantProperties", (msg) =>
+            {
+                if (!msg.ContainsKey("properties"))
+                {
+                    logger.Log(LogLevel.Warning, $"No properties found in call to AddCombatantProperties");
+                    return JObject.FromObject(new { });
+                }
+
+                var p = msg.GetValue("properties").ToObject<List<string>>();
+                CombatantProperties.UnionWith(p);
+                return JObject.FromObject(new { CombatantProperties });
+            });
+
+            RegisterEventHandler("RemoveCombatantProperties", (msg) =>
+            {
+                if (!msg.ContainsKey("properties"))
+                {
+                    logger.Log(LogLevel.Warning, $"No properties found in call to RemoveCombatantProperties");
+                    return JObject.FromObject(new { });
+                }
+
+                var p = msg.GetValue("properties").ToObject<List<string>>();
+                CombatantProperties.RemoveWhere(x => p.Contains(x));
+                return JObject.FromObject(new { CombatantProperties });
+            });
+
             ActGlobals.oFormActMain.BeforeLogLineRead += LogLineHandler;
             NetworkParser.OnOnlineStatusChanged += (o, e) =>
             {
@@ -156,7 +185,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
             }));
         }
 
-        private readonly List<string> DefaultCombatantFields = new List<string>
+        private HashSet<string> CombatantProperties = new HashSet<string>
         {
             "CurrentWorldID",
             "WorldID",
@@ -213,9 +242,11 @@ namespace RainbowMage.OverlayPlugin.EventSources
             var perfTimer = Stopwatch.StartNew();
 #endif
 
-            if (CachedCombatantPropertyInfos.Count == 0)
+            if (CachedCombatantPropertyInfos.Count != CombatantProperties.Count)
             {
-                foreach (var propName in DefaultCombatantFields)
+                CachedCombatantPropertyInfos.Clear();
+                var cp = CombatantProperties.ToList();
+                foreach (var propName in cp)
                 {
                     var pi = typeof(FFXIV_ACT_Plugin.Common.Models.Combatant).GetProperty(propName);
                     if (pi != null)
@@ -224,7 +255,8 @@ namespace RainbowMage.OverlayPlugin.EventSources
                     }
                     else
                     {
-                        logger.Log(LogLevel.Warning, $"Property {propName} not found on Combatant");
+                        CombatantProperties.Remove(propName);
+                        logger.Log(LogLevel.Warning, $"Property {propName} not found on Combatant, removing");
                     }
                 }
             }
@@ -243,7 +275,14 @@ namespace RainbowMage.OverlayPlugin.EventSources
                 Dictionary<string, object> ci = new Dictionary<string, object>();
                 foreach (var propInfo in CachedCombatantPropertyInfos)
                 {
-                    ci.Add(propInfo.Name, propInfo.GetValue(c));
+                    try
+                    {
+                        ci.Add(propInfo.Name, propInfo.GetValue(c));
+                    }
+                    catch (ArgumentException)
+                    {
+                        logger.Log(LogLevel.Warning, $"Property {propInfo.Name} is already added to combatant data, ignoring");
+                    }
                 }
                 detail.Add(ci);
             }
