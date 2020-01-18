@@ -209,7 +209,9 @@ namespace RainbowMage.OverlayPlugin.EventSources
             if (combatants == null)
                 return;
 
+#if TRACE
             var perfTimer = Stopwatch.StartNew();
+#endif
 
             if (CachedCombatantPropertyInfos.Count == 0)
             {
@@ -245,8 +247,10 @@ namespace RainbowMage.OverlayPlugin.EventSources
                 detail,
             }));
 
+#if TRACE
             perfTimer.Stop();
             logger.Log(LogLevel.Info, $"[PERF] DispatchCombatantEvent = {perfTimer.ElapsedMilliseconds}ms");
+#endif
         }
 
         struct PartyMember
