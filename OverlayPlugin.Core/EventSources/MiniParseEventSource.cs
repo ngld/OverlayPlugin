@@ -127,6 +127,35 @@ namespace RainbowMage.OverlayPlugin.EventSources
                 return ret;
             });
 
+            RegisterEventHandler("GetCombatantProperties", (_) =>
+                JObject.FromObject(new { CombatantProperties }));
+
+            RegisterEventHandler("AddCombatantProperties", (msg) =>
+            {
+                if (!msg.ContainsKey("properties"))
+                {
+                    logger.Log(LogLevel.Warning, $"No properties found in call to AddCombatantProperties");
+                    return JObject.FromObject(new { });
+                }
+
+                var p = msg.GetValue("properties").ToObject<List<string>>();
+                CombatantProperties.UnionWith(p);
+                return JObject.FromObject(new { CombatantProperties });
+            });
+
+            RegisterEventHandler("RemoveCombatantProperties", (msg) =>
+            {
+                if (!msg.ContainsKey("properties"))
+                {
+                    logger.Log(LogLevel.Warning, $"No properties found in call to RemoveCombatantProperties");
+                    return JObject.FromObject(new { });
+                }
+
+                var p = msg.GetValue("properties").ToObject<List<string>>();
+                CombatantProperties.RemoveWhere(x => p.Contains(x));
+                return JObject.FromObject(new { CombatantProperties });
+            });
+
             ActGlobals.oFormActMain.BeforeLogLineRead += LogLineHandler;
             NetworkParser.OnOnlineStatusChanged += (o, e) =>
             {
