@@ -217,12 +217,12 @@ namespace RainbowMage.OverlayPlugin.EventSources
             {
                 foreach (var propName in DefaultCombatantFields)
                 {
-                    try
+                    var pi = typeof(FFXIV_ACT_Plugin.Common.Models.Combatant).GetProperty(propName);
+                    if (pi != null)
                     {
-                        var pi = typeof(FFXIV_ACT_Plugin.Common.Models.Combatant).GetProperty(propName);
                         CachedCombatantPropertyInfos.Add(pi);
                     }
-                    catch (ArgumentNullException)
+                    else
                     {
                         logger.Log(LogLevel.Warning, $"Property {propName} not found on Combatant");
                     }
