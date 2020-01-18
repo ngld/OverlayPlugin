@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 namespace RainbowMage.OverlayPlugin.EventSources
@@ -96,6 +97,9 @@ namespace RainbowMage.OverlayPlugin.EventSources
             }
         }
 
+        // Data that overlays can save/load via event handlers.
+        public Dictionary<string, JToken> OverlayData = new Dictionary<string, JToken>();
+
         public MiniParseEventSourceConfig()
         {
             this.updateInterval = 1;
@@ -136,6 +140,11 @@ namespace RainbowMage.OverlayPlugin.EventSources
                 if (obj.TryGetValue("UpdateDpsDuringImport", out value))
                 {
                     result.updateDpsDuringImport = value.ToObject<bool>();
+                }
+
+                if (obj.TryGetValue("OverlayData", out value))
+                {
+                    result.OverlayData = value.ToObject<Dictionary<string, JToken>>();
                 }
             }
 
