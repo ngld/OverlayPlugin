@@ -136,10 +136,12 @@
         },
         "lblPreset.Text": {
             "en": "Preset",
+            "ja-JP": "プリセット",
             "zh-CN": "预设"
         },
         "lblPresetDescription.Text": {
             "en": "Once you have selected a preset above, you'll see a preview.\nYou can move the preview around by dragging it with your mouse.\nTo resize the preview, drag the bottom right corner.\n\nIf you want to use an overlay that isn't listed, select the Custom preset and the correct overlay type.\n\nIf you want to add new presets, send a PR to the GitHub repo (you can find a link on the General tab).",
+            "ja-JP": "上記のプリセットを選択するとプレビューが表示されます。\nプレビューはマウスでドラッグして移動できます。まらサイズを変更するには右下の端をドラッグします。\n\nリストに無いオーバーレイを使用する場合は Custom を選択して適切なタイプを選択して下さい。\n\n新しいプリセットを追加するには GitHub で Pull Request を送って下さい。\n(リンクは General タブにあります。)",
             "zh-CN": "选择上方的预设后，您将看到其预览。\n您可以通过使用鼠标拖动来移动预览。\n要调整预览的大小，请拖动其右下角。\n\n如果要使用未列出的悬浮窗，请选择“自订”预设和正确的悬浮窗种类。\n\n如果要添加新的预设，请发送PR到GitHub项目（可以在“通用”选项卡中找到链接）。"
         },
         "lblType.Text": {
@@ -176,6 +178,11 @@
         }
     },
     "OverlayPlugin.Core/Controls/WSConfigPanel": {
+        "ctxMenuLinkCopy.Text": {
+            "fr-FR": "Copier",
+            "ko-KR": "복사",
+            "zh-CN": "复制"
+        },
         "genSslBtn.Text": {
             "en": "Generate SSL Certificate",
             "fr-FR": "Générer un certificat SSL",
@@ -1154,22 +1161,26 @@
         "ActUpdateCheckFailed": {
             "#comment": "The placeholder here is the project being updated (i.e. OverlayPlugin or Cactbot)",
             "en": "Update check for {0} through ACT failed, retrying with GitHub API.",
+            "ja-JP": "ACTでの {0} のアップデートチェックが失敗しました. GitHub API をリトライします.",
             "zh-CN": "通过ACT检查{0}的更新失败，正在使用GitHub API重试。"
         },
         "ActUpdateException": {
             "#comment": "The first placeholder here is the project being updated (i.e. OverlayPlugin or Cactbot)",
             "en": "ACT Update check for {0} failed, falling back to GitHub API: {1}",
+            "ja-JP": "ACTでの {0} のアップデートチェックが失敗しました. GitHub API に戻ります: {1}",
             "zh-CN": "{0}的ACT检查更新失败，正在回退至GitHub API: {1}"
         },
         "CreatingTempDirFailed": {
             "en": "Failed to create or empty the temporary directory \"{0}\": {1}",
             "fr-FR": "Impossible de créer ou supprimer le répertoire temporaire \"{0}\": {1}",
+            "ja-JP": "一時フォルダの作成に失敗しました \"{0}\": {1}",
             "ko-KR": "임시 디렉토리 \"{0}\"(을/를) 생성하거나 비우지 못했습니다: {1}",
             "zh-CN": "创建或清空缓存目录\"{0}\": {1}失败"
         },
         "DownloadFailedContentLengthMissing": {
             "en": "Download failed! The download has no file size (Content-Length header is missing).",
             "fr-FR": "Le téléchargement a échoué ! Le téléchargement est de taille nulle (l'en-tête Content-Length est manquant).",
+            "ja-JP": "ダウンロードに失敗しました! ファイルサイズが不明です (Content-Length が見つかりませんでした).",
             "ko-KR": "다운로드 실패! 다운로드 파일 크기가 없음 (Content-Length 헤더 누락)",
             "zh-CN": "下载失败！没有下载文件大小（Content-Length标头缺失）。"
         },
@@ -1177,180 +1188,210 @@
             "#comment": "The placeholder here is the project being updated (i.e. OverlayPlugin or Cactbot)",
             "en": "{0} Error",
             "fr-FR": "Erreur {0}",
+            "ja-JP": "{0} エラー",
             "ko-KR": "{0} 오류",
             "zh-CN": "{0}错误"
         },
         "Exception": {
             "en": "Failed: {0}",
             "fr-FR": "Echec : {0}",
+            "ja-JP": "失敗: {0}",
             "ko-KR": "실패: {0}",
             "zh-CN": "失败：{0}"
         },
         "LaunchingInstallerFailed": {
             "en": "Failed to launch installer: {0}",
             "fr-FR": "Impossible de lancer l'installeur : {0}",
+            "ja-JP": "インストーラーの起動に失敗しました: {0}",
             "ko-KR": "설치 프로그램을 시작하지 못했습니다: {0}",
             "zh-CN": "打开安装程序失败：{0}"
         },
         "LogAbortedByUser": {
             "en": "Aborted by user.",
             "fr-FR": "Annulé par l'utilisateur.",
+            "ja-JP": "中断されました.",
             "ko-KR": "사용자에 의한 중단",
             "zh-CN": "用户已终止。"
         },
         "LogBackingUpOldFiles": {
             "en": "Backing up old files...",
             "fr-FR": "Sauvegarde des anciens fichiers ...",
+            "ja-JP": "古いファイルをバックアップ中...",
             "ko-KR": "이전 파일을 백업 중입니다...",
             "zh-CN": "正在备份旧文件..."
         },
         "LogCleaningUp": {
             "en": "Cleaning up...",
             "fr-FR": "Nettoyage ...",
+            "ja-JP": "クリーンアップ中...",
             "ko-KR": "로그 파일을 정리 중입니다...",
             "zh-CN": "正在执行清理..."
         },
         "LogDeletingTempFiles": {
             "en": "Deleting temporary files...",
             "fr-FR": "Suppression des fichiers temporaires ...",
+            "ja-JP": "一時フォルダを削除中...",
             "ko-KR": "임시 파일을 삭제 중입니다...",
             "zh-CN": "正在删除临时文件..."
         },
         "LogDone": {
             "en": "Done.",
             "fr-FR": "Effectué.",
+            "ja-JP": "完了.",
             "ko-KR": "완료",
             "zh-CN": "完成。"
         },
         "LogDownloadFailed": {
             "en": "Download failed: {0}",
             "fr-FR": "Téléchargement échoué : {0}",
+            "ja-JP": "ダウンロード失敗: {0}",
             "ko-KR": "다운로드 실패: {0}",
             "zh-CN": "下载失败：{0}"
         },
         "LogDownloadInterrupted": {
             "en": "The download was interrupted: {0}",
             "fr-FR": "Le téléchargement a été interrompu : {0}",
+            "ja-JP": "ダウンロードが中断されました: {0}",
             "ko-KR": "다운로드 중단: {0}",
             "zh-CN": "下载被中断：{0}"
         },
         "LogDownloading": {
             "en": "Downloading \"{0}\" into {1}...",
             "fr-FR": "Téléchargement de \"{0}\" dans {1} ...",
+            "ja-JP": "ダウンロード中 \"{0}\" into {1}...",
             "ko-KR": "\"{0}\"(을/를) {1}에 다운로드 중 ...",
             "zh-CN": "正在下载\"{0}\"至{1}..."
         },
         "LogExtractingFiles": {
             "en": "Extracting files...",
             "fr-FR": "Extraction des fichiers ...",
+            "ja-JP": "ファイルを展開中...",
             "ko-KR": "파일을 추출하는 중입니다...",
             "zh-CN": "正在解压文件..."
         },
         "LogExtractionAbortedByUser": {
             "en": "Extraction aborted by user.",
             "fr-FR": "Extraction annulée par l'utilisateur.",
+            "ja-JP": "ファイルの展開が中断されました.",
             "ko-KR": "사용자에 의한 추출 중단",
             "zh-CN": "解压缩被用户终止。"
         },
         "LogFailedReplaceDirectory": {
             "en": "Failed to replace old directory: {0}",
             "fr-FR": "Impossible de remplacer l'ancier répertoire : {0}",
+            "ja-JP": "古いフォルダの置き換えに失敗しました: {0}",
             "ko-KR": "이전 디렉토리를 변경하지 못했습니다: {0}",
             "zh-CN": "无法替换旧目录：{0}"
         },
         "LogFailedToDelete": {
             "en": "Failed to delete {0}: {1}",
             "fr-FR": "Impossible d'effacer {0}: {1}",
+            "ja-JP": "削除に失敗 {0}: {1}",
             "ko-KR": "{0}(을/를) 삭제하지 못했습니다: {1}",
             "zh-CN": "无法删除{0}：{1}"
         },
         "LogInstallerFailed": {
             "en": "Error: The installer did not finish correctly.",
             "fr-FR": "Erreur : L'installation ne s'est pas correctement terminée",
+            "ja-JP": "エラー: インストーラーが正常に終了しませんでした.",
             "ko-KR": "오류: 설치 프로그램이 올바르게 완료되지 않았습니다.",
             "zh-CN": "错误：安装程序没有正确完成。"
         },
         "LogInstallerWaiting": {
             "en": "Waiting for installer to exit...",
             "fr-FR": "En attente de l'installeur pour quitter ...",
+            "ja-JP": "インストーラーの終了を待機中...",
             "ko-KR": "설치 프로그램이 종료되기를 기다리는 중...",
             "zh-CN": "正在等待安装程序退出..."
         },
         "LogLaunchingInstaller": {
             "en": "Launching installer...",
             "fr-FR": "Démarrage de l'installeur",
+            "ja-JP": "インストーラーを起動中...",
             "ko-KR": "설치 프로그램을 시작하는 중...",
             "zh-CN": "正在运行安装程序..."
         },
         "LogMovingDirectory": {
             "en": "Moving directory...",
             "fr-FR": "Déplacement des répertoires",
+            "ja-JP": "フォルダを移動中...",
             "ko-KR": "디렉토리를 이동하는 중...",
             "zh-CN": "正在移动目录..."
         },
         "LogOpeningArchive": {
             "en": "Opening archive...",
             "fr-FR": "Ouverture de l'archive ...",
+            "ja-JP": "アーカイブを開いています...",
             "ko-KR": "아카이브를 여는 중...",
             "zh-CN": "正在打开压缩包..."
         },
         "LogOverwritingOldFiles": {
             "en": "Overwriting old files...",
             "fr-FR": "Ecrasement des anciens fichiers ...",
+            "ja-JP": "古いファイルを上書き中...",
             "ko-KR": "이전 파일을 덮어 쓰는 중...",
             "zh-CN": "正在覆写旧文件..."
         },
         "LogOverwritingOldFilesFailed": {
             "en": "Failed to overwrite old files: {0}\nWARNING: The plugin might be in an unusable state!!\nRun the update check again or reinstall the plugin, otherwise it might not survive the next ACT restart.",
             "fr-FR": "Impossible d'écraser les anciens fichiers : {0} !\nATTENTION : Le plugin est peut-être dans un état instable !!\nRelancez la mise à jour ou réinstallez le plugin, sinon il pourrait ne pas survivre au redémarrage d'ACT.",
+            "ja-JP": "古いファイルの上書きに失敗しました: {0}\nWARNING: プラグインは非常に不安定な状態です!!\nACTを再起動した際にプラグインが読み込まれない可能性があります. 再度アップデートの確認をするか再インストールをして下さい. ",
             "ko-KR": "이전 파일을 덮어 쓰지 못했습니다: {0}\n 경고 : 플러그인을 사용할 수 없는 상태일 수도 있습니다 !!\n업데이트 확인을 다시 실행하거나 플러그인을 재설치하십시오. 그렇지 않으면 ACT 재시작 후에도 문제가 발생할 수 있습니다.",
             "zh-CN": "无法覆写旧文件：{0}\n警告：插件可能处于无法使用的状态！！\n再次运行更新检查或重新安装插件，否则它可能无法在下次ACT重新启动时正常工作。"
         },
         "LogRemovingOldBackup": {
             "en": "Removing old backup directory...",
             "fr-FR": "Suppression du répertoire de sauvegarde ...",
+            "ja-JP": "古いバックアップフォルダを削除中...",
             "ko-KR": "이전 백업 디렉토리를 삭제하는 중...",
             "zh-CN": "正在删除旧备份目录..."
         },
         "LogRestoringBackup": {
             "en": "Restoring backup...",
             "fr-FR": "Restauration de la sauvegarde ...",
+            "ja-JP": "バックアップを復元中...",
             "ko-KR": "백업을 복원하는 중...",
             "zh-CN": "正在恢复备份..."
         },
         "LogResumingDownload": {
             "en": "Resuming download...",
             "fr-FR": "Reprise du téléchargement",
+            "ja-JP": "ダウンロードを再開中...",
             "ko-KR": "다운로드를 재개하는 중...",
             "zh-CN": "正在恢复下载..."
         },
         "LogRetry": {
             "en": "Trying again...",
             "fr-FR": "Nouvel essai ...",
+            "ja-JP": "リトライ中...",
             "ko-KR": "다시 시도하는 중...",
             "zh-CN": "正在重试..."
         },
         "LogRetryAfter1s": {
             "en": "Retrying in 1 second.",
             "fr-FR": "Nouvel essai dans 1 seconde.",
+            "ja-JP": "1秒後にリトライします.",
             "ko-KR": "1초 후에 다시 시도",
             "zh-CN": "1秒后重试。"
         },
         "MsvcrtFailed": {
             "en": "The MSVCRT installation failed.",
             "fr-FR": "L'installation de MSVCRT a échouée.",
+            "ja-JP": "MSVCRT のインストールに失敗しました.",
             "ko-KR": "MSVCRT 설치에 실패했습니다.",
             "zh-CN": "MSVCRT安装失败。"
         },
         "MsvcrtMissing": {
             "en": "You're missing the MS Visual C++ Redistributable for Visual Studio 2019.\nYou'll need that for OverlayPlugin. Install it now?",
             "fr-FR": "MS Visual C++ Redistributable pour Visual Studio 2019 est manquant.\nCe composant est nécessaire pour OverlayPlugin. L'installer maintenant ?",
+            "ja-JP": "MS Visual C++ Redistributable for Visual Studio 2019 が見つかりません.\nOverlayPlugin にはこれが必要です. 今すぐインストールしますか?",
             "ko-KR": "Visual Studio 2019용 MS Visual C++ 재배포 가능 패키지가 누락되었습니다.\nOverlay Plugin에 필요합니다. 지금 설치하시겠습니까?",
             "zh-CN": "你没有安装MS Visual C++ Redistributable for Visual Studio 2019。\nOverlayPlugin的运行需要它。现在安装？"
         },
         "OutOfRetries": {
             "en": "Out of retries.",
             "fr-FR": "Nombre maximum d'essais dépassés",
+            "ja-JP": "リトライを終了.",
             "ko-KR": "재시도 중입니다.",
             "zh-CN": "超出尝试次数。"
         },
@@ -1362,17 +1403,20 @@
         },
         "SharpCompressOutdatedError": {
             "en": "The currently loaded version of SharpCompress is outdated!\nMake sure you load OverlayPlugin before any other plugins that also use SharpCompress (like ACTWebSocket).",
+            "ja-JP": "現在の SharpCompress のバージョンが古いです!\nSharpCompress を使用する他のプラグインの前に、必ずOverlayPluginをロードしてください.",
             "zh-CN": "当前加载的SharpCompress版本过旧！\n请确保先加载OverlayPlugin，再加载其他也使用SharpCompress的插件（例如ACTWebSocket）。"
         },
         "StatusCancelled": {
             "en": "Cancelled!",
             "fr-FR": "Annulé !",
+            "ja-JP": "キャンセルされました!",
             "ko-KR": "취소!",
             "zh-CN": "已取消！"
         },
         "StatusCancelling": {
             "en": "Cancelling...",
             "fr-FR": "Annulation ...",
+            "ja-JP": "キャンセル中...",
             "ko-KR": "취소 중...",
             "zh-CN": "正在取消..."
         },
@@ -1380,6 +1424,7 @@
             "#comment": "The [{0}/{1}] part indicates the current step. i.e. [1/2] would indicate that this is the first of two steps for the current task.",
             "en": "[{0}/{1}]: Done.",
             "fr-FR": "[{0}/{1}] : Effectué.",
+            "ja-JP": "[{0}/{1}]: 完了.",
             "ko-KR": "[{0}/{1}]: 완료.",
             "zh-CN": "[{0}/{1}]:已完成。"
         },
@@ -1387,12 +1432,14 @@
             "#comment": "The [{0}/{1}] part indicates the current step. i.e. [1/2] would indicate that this is the first of two steps for the current task.",
             "en": "[{0}/{1}]: Starting download...",
             "fr-FR": "[{0}/{1}] : Démarrage du téléchargement ...",
+            "ja-JP": "[{0}/{1}]: ダウンロードを開始中...",
             "ko-KR": "[{0}/{1}]: 다운로드를 시작하는 중...",
             "zh-CN": "[{0}/{1}]:正在开始下载..."
         },
         "StatusError": {
             "en": "Error",
             "fr-FR": "Erreur",
+            "ja-JP": "エラー",
             "ko-KR": "오류",
             "zh-CN": "错误"
         },
@@ -1400,6 +1447,7 @@
             "#comment": "The [{0}/{1}] part indicates the current step. i.e. [1/2] would indicate that this is the first of two steps for the current task.",
             "en": "[{0}/{1}]: Launching installer...",
             "fr-FR": "[{0}/{1}] : Démarrage de l'installeur ...",
+            "ja-JP": "[{0}/{1}]: インストーラーを起動中...",
             "ko-KR": "[{0}/{1}] : 설치 프로그램 시작 중...",
             "zh-CN": "[{0}/{1}]:正在运行安装程序...。"
         },
@@ -1407,24 +1455,28 @@
             "#comment": "The [{0}/{1}] part indicates the current step. i.e. [1/2] would indicate that this is the first of two steps for the current task.",
             "en": "[{0}/{1}]: Preparing extraction...",
             "fr-FR": "[{0}/{1}] : Préparation de l'extraction ...",
+            "ja-JP": "[{0}/{1}]: 展開の準備中...",
             "ko-KR": "[{0}/{1}]: 추출 준비 중...",
             "zh-CN": "[{0}/{1}]:正在准备解压缩..."
         },
         "UpdateAlreadyLatest": {
             "en": "You are already on the latest version.",
             "fr-FR": "Vous êtes déjà sur la dernière version.",
+            "ja-JP": "現在のバージョンが最新です.",
             "ko-KR": "이미 최신 버전입니다.",
             "zh-CN": "您正在使用最新版本。"
         },
         "UpdateCefDlFailed": {
             "en": "Failed to download CEF! Check the OverlayPlugin.dll tab for details.",
             "fr-FR": "Impossible de télécharger CEF ! Vérifiez l'onglet OverlayPlugin.dll pour plus de détails.",
+            "ja-JP": "CEF のダウロードに失敗しました. 詳細は OverlayPlugin.dll のタブを確認して下さい.",
             "ko-KR": "CEF 패키지를 다운로드하지 못했습니다. OverlayPlugin을 사용할 수 없습니다.",
             "zh-CN": "下载CEF失败！检查OverlayPlugin.dll选项卡以获取详细信息。"
         },
         "UpdateCheckException": {
             "en": "Failed to check for updates:\n{0}",
             "fr-FR": "Impossible de vérifier les mises à jour : \n{0}",
+            "ja-JP": "アップデートチェックに失敗:\n{0}",
             "ko-KR": "업데이트를 확인하지 못했습니다:\n{0}",
             "zh-CN": "检查更新失败：\n{0}"
         },
@@ -1432,24 +1484,28 @@
             "#comment": "The placeholder here is the project being updated (i.e. OverlayPlugin or Cactbot)",
             "en": "{0} Update Check",
             "fr-FR": "{0}: Vérification des mises à jour",
+            "ja-JP": "{0} アップデートの確認",
             "ko-KR": "{0} 업데이트 확인",
             "zh-CN": "{0}检查更新"
         },
         "UpdateFailedError": {
             "en": "Failed to update the plugin. It might not load the next time you start ACT. Retry?",
             "fr-FR": "Impossible de mettre à jour le plugin. Il est possible qu'il ne démarre pas au prochain lancement d'ACT. Réessayer ?",
+            "ja-JP": "プラグインのアップデートに失敗しました. 次にACTを起動してもプラグインは読み込まれません. リトライしますか?",
             "ko-KR": "플러그인을 업데이트하지 못했습니다. 다음에 ACT를 재시작할 때 플러그인이 로드되지 않을 수도 있습니다. 재시작하시겠습니까?",
             "zh-CN": "插件更新失败。下次运行ACT时将不会加载本插件。重试？"
         },
         "UpdateParseVersionError": {
             "en": "Failed to parse version:\n{0}",
             "fr-FR": "Impossible de détecter la version :\n{0}",
+            "ja-JP": "バージョンの確認に失敗:\n{0}",
             "ko-KR": "버전을 파싱하지 못했습니다:\n{0}",
             "zh-CN": "解析版本失败:\n{0}"
         },
         "UpdateSuccess": {
             "en": "The update was successful. Please restart ACT to load the new plugin version.",
             "fr-FR": "Mise à jour réalisée avec succès. Redémarrez ACT pour charger la nouvelle version.",
+            "ja-JP": "アップデートが成功しました. 新しいバージョンを使用するにはACTを再起動して下さい.",
             "ko-KR": "성공적으로 업데이트했습니다. 새 플러그인 버전을 로드하려면 ACT를 재시작하세요.",
             "zh-CN": "更新成功。请重新运行ACT来加载新版插件。"
         },
@@ -1457,6 +1513,7 @@
             "#comment": "The placeholder here is the project being updated (i.e. OverlayPlugin or Cactbot)",
             "en": "{0} Update",
             "fr-FR": "Mise à jour d'{0}",
+            "ja-JP": "{0} アップデート",
             "ko-KR": "{0} 업데이트",
             "zh-CN": "{0}更新"
         }

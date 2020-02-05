@@ -274,4 +274,7 @@
   <data name="CustomPresetLabel" xml:space="preserve">
     <value>自订</value>
   </data>
+  <data name="PresetUsesUnsupportedType" xml:space="preserve">
+    <value>预设{0}使用不受支持的类型{1}！</value>
+  </data>
 </root>

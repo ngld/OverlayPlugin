@@ -210,4 +210,19 @@
   <data name="btnRemoveHotkey.Text" xml:space="preserve">
     <value>선택한 단축키 제거</value>
   </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>오버레이 위치가 잠겨있으면, 위치 고정을 풀기 전까지는 오버레이를 움직일 수 없습니다.</value>
+  </data>
+  <data name="hotkeyColEnabled.HeaderText" xml:space="preserve">
+    <value>활성화</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>오버레이가 숨겨진 상태일 때 음소거 하기</value>
+  </data>
+  <data name="hotkeyColHotkey.HeaderText" xml:space="preserve">
+    <value>단축키</value>
+  </data>
+  <data name="hotkeyColAction.HeaderText" xml:space="preserve">
+    <value>행동</value>
+  </data>
 </root>

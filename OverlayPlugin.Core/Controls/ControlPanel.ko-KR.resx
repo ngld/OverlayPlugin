@@ -166,4 +166,7 @@
   <data name="checkBoxFollowLog.Text" xml:space="preserve">
     <value>로그 자동 스크롤</value>
   </data>
+  <data name="buttonRename.Text" xml:space="preserve">
+    <value>이름 바꾸기</value>
+  </data>
 </root>

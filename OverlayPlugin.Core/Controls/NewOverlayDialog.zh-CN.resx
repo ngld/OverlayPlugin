@@ -149,4 +149,13 @@
   <data name="lblPreset.Text" xml:space="preserve">
     <value>预设</value>
   </data>
+  <data name="lblPresetDescription.Text" xml:space="preserve">
+    <value>选择上方的预设后，您将看到其预览。
+您可以通过使用鼠标拖动来移动预览。
+要调整预览的大小，请拖动其右下角。
+
+如果要使用未列出的悬浮窗，请选择“自订”预设和正确的悬浮窗种类。
+
+如果要添加新的预设，请发送PR到GitHub项目（可以在“通用”选项卡中找到链接）。</value>
+  </data>
 </root>

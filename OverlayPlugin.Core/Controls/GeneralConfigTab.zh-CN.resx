@@ -132,4 +132,7 @@
     <value>当过场动画时自动隐藏悬浮窗</value>
   </data>
 
+  <data name="lblGithub.Text" xml:space="preserve">
+    <value>GitHub项目：</value>
+  </data>
 </root>

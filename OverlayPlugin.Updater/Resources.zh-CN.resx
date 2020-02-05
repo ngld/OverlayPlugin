@@ -270,4 +270,10 @@ OverlayPlugin的运行需要它。现在安装？</value>
     <value>当前加载的SharpCompress版本过旧！
 请确保先加载OverlayPlugin，再加载其他也使用SharpCompress的插件（例如ACTWebSocket）。</value>
   </data>
+  <data name="ActUpdateException" xml:space="preserve">
+    <value>{0}的ACT检查更新失败，正在回退至GitHub API: {1}</value>
+  </data>
+  <data name="ActUpdateCheckFailed" xml:space="preserve">
+    <value>通过ACT检查{0}的更新失败，正在使用GitHub API重试。</value>
+  </data>
 </root>
