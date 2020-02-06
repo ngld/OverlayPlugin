@@ -889,7 +889,7 @@
         "MapESMiniParse": {
             "en": "MiniParseEventSource",
             "ko-KR": "고급 설정",
-            "zh-CN": "设置"
+            "zh-CN": " "
         },
         "MapOverlayLabel": {
             "#comment": "This name appears on the overlay list underneath the overlay name.",
@@ -1009,7 +1009,7 @@
         },
         "TabsESLabel": {
             "en": "Event Source",
-            "zh-CN": "事件源"
+            "zh-CN": "基本设置"
         },
         "UnregisterHotkeyError": {
             "en": "Failed to unregister hotkey {0} in DisableHotKeys().",
