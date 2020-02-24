@@ -70,7 +70,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
                 if (targetData)
                 {
                     // See CreateTargetData() below
-                    //this.DispatchEvent(CreateTargetData(combatants));
+                    this.DispatchEvent(CreateTargetData(combatants));
                 }
                 if (aggroList)
                 {
@@ -107,8 +107,6 @@ namespace RainbowMage.OverlayPlugin.EventSources
 
         internal JObject CreateTargetData(List<Combatant> combatants)
         {
-            // TODO: Update the following code for the new memory structure
-
             EnmityTargetDataObject enmity = new EnmityTargetDataObject();
             try
             {

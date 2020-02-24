@@ -101,26 +101,26 @@ namespace RainbowMage.OverlayPlugin.EventSources
         private IntPtr enmityAddress = IntPtr.Zero;
         private IntPtr aggroAddress = IntPtr.Zero;
 
-        private const string charmapSignature = "574883EC??488B1D????????488BF233D2";
-        private const string targetSignature = "483935????????7520483935????????7517";
+        private const string charmapSignature = "48c1ea0381faa7010000????8bc2488d0d";
+        private const string targetSignature = "e8f2652f0084c00f8591010000488d0d";
         private const string enmitySignature = "83f9ff7412448b048e8bd3488d0d";
 
         // Offsets from the signature to find the correct address.
         private const int charmapSignatureOffset = 0;
-        private const int targetSignatureOffset = 192;
+        private const int targetSignatureOffset = 0;
         private const int enmitySignatureOffset = -4648;
 
         // Offset from the enmityAddress to find various enmity data structures.
         private const int aggroEnmityOffset = 0x908;
 
         // Offsets from the targetAddress to find the correct target type.
-        private const int targetTargetOffset = -0x18;
-        private const int focusTargetOffset = 0x38;
-        private const int hoverTargetOffset = 0x20;
+        private const int targetTargetOffset = 176;
+        private const int focusTargetOffset = 184;
+        private const int hoverTargetOffset = 248;
 
         // Constants.
         private const uint emptyID = 0xE0000000;
-        private const int numMemoryCombatants = 344;
+        private const int numMemoryCombatants = 421;
 
         public EnmityMemory(ILogger logger)
         {
@@ -177,7 +177,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
 
             /// CHARMAP
             List<IntPtr> list = memory.SigScan(charmapSignature, 0, bRIP);
-            if (list != null && list.Count == 1)
+            if (list != null && list.Count > 0)
             {
                 charmapAddress = list[0] + charmapSignatureOffset;
             }
@@ -190,7 +190,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
 
             // ENMITY
             list = memory.SigScan(enmitySignature, 0, bRIP);
-            if (list != null && list.Count == 1)
+            if (list != null && list.Count > 0)
             {
                 enmityAddress = list[0] + enmitySignatureOffset;
                 aggroAddress = IntPtr.Add(enmityAddress, aggroEnmityOffset);
@@ -206,7 +206,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
 
             /// TARGET
             list = memory.SigScan(targetSignature, 0, bRIP);
-            if (list != null && list.Count == 1)
+            if (list != null && list.Count > 0)
             {
                 targetAddress = list[0] + targetSignatureOffset;
             }
@@ -351,19 +351,19 @@ namespace RainbowMage.OverlayPlugin.EventSources
             [FieldOffset(0xA8)]
             public Single PosZ;
 
-            [FieldOffset(0x1820)]
+            [FieldOffset(0x17F0)]
             public uint TargetID;
 
-            [FieldOffset(0x18B8)]
+            [FieldOffset(0x1898)]
             public int CurrentHP;
 
-            [FieldOffset(0x18BC)]
+            [FieldOffset(0x189C)]
             public int MaxHP;
 
-            [FieldOffset(0x18F4)]
+            [FieldOffset(0x18D6)]
             public byte Job;
 
-            [FieldOffset(0x1978)]
+            [FieldOffset(0x1958)]
             public fixed byte Effects[effectBytes];
         }
 
