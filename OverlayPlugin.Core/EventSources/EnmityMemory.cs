@@ -351,6 +351,9 @@ namespace RainbowMage.OverlayPlugin.EventSources
             [FieldOffset(0xA8)]
             public Single PosZ;
 
+            [FieldOffset(0xB0)]
+            public Single Rotation;
+
             [FieldOffset(0x17F0)]
             public uint TargetID;
 
