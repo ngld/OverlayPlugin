@@ -34,6 +34,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
         public Single PosX;
         public Single PosY;
         public Single PosZ;
+        public Single Rotation;
 
         public string Distance;
         public byte EffectiveDistance;
@@ -412,6 +413,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
                     PosX = mem.PosX,
                     PosY = mem.PosY,
                     PosZ = mem.PosZ,
+                    Rotation = mem.Rotation,
                     TargetID = mem.TargetID,
                     CurrentHP = mem.CurrentHP,
                     MaxHP = mem.MaxHP,
