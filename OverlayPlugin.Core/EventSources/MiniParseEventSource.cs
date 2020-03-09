@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -10,6 +11,7 @@ using Advanced_Combat_Tracker;
 using System.Diagnostics;
 using System.Windows.Forms;
 using FFXIV_ACT_Plugin.Common.Models;
+using System.Collections.Concurrent;
 
 namespace RainbowMage.OverlayPlugin.EventSources
 {
@@ -66,6 +68,8 @@ namespace RainbowMage.OverlayPlugin.EventSources
         private const string FileChangedEvent = "FileChanged";
         private const string OnlineStatusChangedEvent = "OnlineStatusChanged";
         private const string PartyChangedEvent = "PartyChanged";
+
+        private ConcurrentDictionary<int, KeyValuePair<string, string>> LogLineMatchers = new ConcurrentDictionary<int, KeyValuePair<string, string>>();
 
         // Event Source
 
@@ -135,6 +139,75 @@ namespace RainbowMage.OverlayPlugin.EventSources
                 return JObject.FromObject(new
                 {
                     combatants
+                });
+            });
+
+            RegisterEventHandler("nextLineMatching", (msg) => {
+                if (!msg.ContainsKey("rseq"))
+                    return null;
+                var rseq = msg["rseq"].ToObject<int>();
+
+                var sRegex = msg["regex"].ToString();
+                if (sRegex == null)
+                    return JObject.FromObject(new
+                    {
+                        error = "No regex specified"
+                    });
+
+                if (!msg.ContainsKey("timeout"))
+                    return JObject.FromObject(new
+                    {
+                        error = "No timeout specified"
+                    });
+
+                try
+                {
+                    Regex.IsMatch("", sRegex, RegexOptions.Compiled, new TimeSpan(0,0,0,0,100));
+                }
+                catch (ArgumentException)
+                {
+                    return JObject.FromObject(new
+                    {
+                        error = "Invalid Regex"
+                    });
+                }
+                catch (RegexMatchTimeoutException)
+                {
+                    return JObject.FromObject(new
+                    {
+                        error = "Regex too slow/inefficient, took more than 100ms to validate"
+                    });
+                }
+
+                var timeout = msg["timeout"].ToObject<int>();
+
+                LogLineMatchers[rseq] = new KeyValuePair<string, string>(sRegex, null);
+
+                var delay = 25; // in ms
+                var max = timeout/delay;
+                var i = 0;
+                for (i = 0; i < max && LogLineMatchers[rseq].Value == null; ++i)
+                {
+                    System.Threading.Thread.Sleep(delay);
+                }
+
+                KeyValuePair<string, string> outkvp;
+
+                LogLineMatchers.TryRemove(rseq, out outkvp);
+
+                var logLine = outkvp.Value;
+
+                if (logLine == null)
+                {
+                    return JObject.FromObject(new
+                    {
+                        error = "Timed out before matching line received"
+                    });
+                }
+
+                return JObject.FromObject(new
+                {
+                    logLine
                 });
             });
 
@@ -264,6 +337,10 @@ namespace RainbowMage.OverlayPlugin.EventSources
                 }
                 return;
             }
+
+            foreach (var kvp in LogLineMatchers)
+                if (kvp.Value.Value == null && Regex.IsMatch(args.originalLogLine, kvp.Value.Key, RegexOptions.Compiled))
+                    LogLineMatchers[kvp.Key]=new KeyValuePair<string, string>(kvp.Value.Key, args.originalLogLine);
 
             LogMessageType lineType;
             var line = args.originalLogLine.Split('|');
