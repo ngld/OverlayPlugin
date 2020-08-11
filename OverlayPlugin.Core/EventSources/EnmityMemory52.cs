@@ -317,7 +317,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
             [FieldOffset(0x189C)]
             public int MaxHP;
 
-            [FieldOffset(0x18D6)]
+            [FieldOffset(0x18DA)]
             public byte Job;
 
             [FieldOffset(0x1958)]

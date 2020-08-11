@@ -54,7 +54,7 @@ const textOptionsAll = {
     '不显示': 'None',
     '当前体力值': 'CurrentHP',
     '最大体力值': 'MaxHP',
-    '当前体力值/最大体力值': 'CurrentAndMaxHP',
+    '当前体力值 / 最大体力值': 'CurrentAndMaxHP',
     '体力值百分比': 'PercentHP',
     '推测死亡时间': 'TimeToDeath',
     '目标距离': 'Distance',
@@ -292,7 +292,7 @@ const configStructure = [
     id: 'midColorPercent',
     name: {
       English: 'Percent below where hp is mid',
-      Chinese: '定义中血量 (剩余体力值百分比)',
+      Chinese: '中血量定义 (剩余体力值百分比)',
     },
     type: 'text',
     default: 60,
@@ -309,8 +309,8 @@ const configStructure = [
   {
     id: 'lowColorPercent',
     name: {
-      English: 'Percent below where hp is low',
-      Chinese: '定义低血量 (剩余体力值百分比)',
+      English: 'Percent below where hp is mid',
+      Chinese: '低血量定义 (剩余体力值百分比)',
     },
     type: 'text',
     default: 30,
