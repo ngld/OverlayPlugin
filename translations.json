@@ -119,10 +119,12 @@
             "zh-CN": "GitHub项目："
         },
         "lblNewUserWelcome.Text": {
-            "en": "If you're looking for a URL field here, you're either used to the old OverlayPlugin or following an outdated guide. You need to create an overlay using the New button in the bottom-left corner before you will see any overlays from OverlayPlugin.\nPlease try using the presets instead of manually setting the URL since this can prevent a bunch of issues.\n\n"
+            "en": "If you're looking for a URL field here, you're either used to the old OverlayPlugin or following an outdated guide. You need to create an overlay using the New button in the bottom-left corner before you will see any overlays from OverlayPlugin.\nPlease try using the presets instead of manually setting the URL since this can prevent a bunch of issues.\n\n",
+            "zh-CN": "如果您正在此处寻找链接字段，那么说明您仍然习惯于旧版本的OverlayPlugin或遵循于过时的指南。您首先需要使用左下角的“新建”按钮创建一个悬浮窗，然后才能看到OverlayPlugin的任何悬浮窗。\n请尝试使用预设而不是手动设置的链接，这将可以防止一系列的问题。\n\n"
         },
         "lblReadMe.Text": {
-            "en": "READ THIS:"
+            "en": "READ THIS:",
+            "zh-CN": "温馨提示："
         },
         "lnkGithubRepo.Text": {
             "en": "https://github.com/ngld/OverlayPlugin"
