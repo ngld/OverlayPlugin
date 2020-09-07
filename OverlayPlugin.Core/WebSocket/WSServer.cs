@@ -66,6 +66,10 @@ namespace RainbowMage.OverlayPlugin
             _logger = container.Resolve<ILogger>();
             _cfg = container.Resolve<IPluginConfig>();
             _plugin = container.Resolve<PluginMain>();
+            if (_cfg.WSServerRunning)
+            {
+                Start();
+            }
         }
 
         public void Start()
