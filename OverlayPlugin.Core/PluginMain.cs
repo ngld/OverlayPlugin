@@ -246,7 +246,7 @@ namespace RainbowMage.OverlayPlugin
                                     // after it's initialized and that requires the event sources to be initialized.
                                     if (Config.WSServerRunning)
                                     {
-                                        _container.Register(new WSServer(_container));
+                                        _container.Resolve<WSServer>().Start();
                                     }
 
                                     configSaveTimer.Start();
