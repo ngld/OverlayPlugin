@@ -1624,12 +1624,12 @@
             "zh-CN": "正在打开压缩包..."
         },
         "LogOverwriteFailed": {
-            "en": "No retries left, update failed."
+            "en": "No retries left, update failed.",
             "zh-CN": "超过重试次数，更新失败。"
         },
         "LogOverwriteRetry": {
             "#comment": "{0} is the filename and {1} is the error message",
-            "en": "Failed to overwrite {0}, retrying...\n{1}"
+            "en": "Failed to overwrite {0}, retrying...\n{1}",
             "zh-CN": "覆写{0}文件失败，正在重试...\n{1}"
         },
         "LogOverwritingOldFiles": {
