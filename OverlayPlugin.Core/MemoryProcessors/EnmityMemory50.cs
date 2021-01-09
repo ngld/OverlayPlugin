@@ -11,17 +11,21 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
         private FFXIVMemory memory;
         private ILogger logger;
         private DateTime lastSigScan = DateTime.MinValue;
+        private DateTimeOffset lastDateTimeDynamicAddressChecked = DateTimeOffset.UtcNow;
 
         private IntPtr charmapAddress = IntPtr.Zero;
         private IntPtr targetAddress = IntPtr.Zero;
         private IntPtr enmityAddress = IntPtr.Zero;
         private IntPtr aggroAddress = IntPtr.Zero;
         private IntPtr inCombatAddress = IntPtr.Zero;
+        private IntPtr enmityHudAddress = IntPtr.Zero;
+        private IntPtr enmityHudDynamicAddress = IntPtr.Zero;
 
         private const string charmapSignature = "488b420848c1e8033da701000077248bc0488d0d";
         private const string targetSignature = "41bc000000e041bd01000000493bc47555488d0d";
         private const string enmitySignature = "83f9ff7412448b048e8bd3488d0d";
         private const string inCombatSignature = "84c07425450fb6c7488d0d";
+        private const string enmityHudSignature = "48895C246048897C2470488B3D";
 
         // Offsets from the signature to find the correct address.
         private const int charmapSignatureOffset = 0;
@@ -29,6 +33,8 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
         private const int enmitySignatureOffset = -4648;
         private const int inCombatSignatureBaseOffset = 0;
         private const int inCombatSignatureOffsetOffset = 5;
+        private const int enmityHudSignatureOffset = 0;
+        private readonly int[] enmityHudPointerPath = new int[] { 0x30, 0x58, 0x98, 0x20 };
 
         // Offset from the enmityAddress to find various enmity data structures.
         private const int aggroEnmityOffset = 0x908;
@@ -37,6 +43,10 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
         private const int targetTargetOffset = -0x18;
         private const int focusTargetOffset = 0x38;
         private const int hoverTargetOffset = 0x20;
+
+        // Offsets from the enmityHudAddress tof find various enmity HUD data structures.
+        private const int enmityHudCountOffset = 4;
+        private const int enmityHudEntryOffset = 20;
 
         // Constants.
         private const uint emptyID = 0xE0000000;
@@ -165,10 +175,30 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
                 success = false;
             }
 
+            // EnmityList
+            list = memory.SigScan(enmityHudSignature, 0, bRIP);
+            if (list != null && list.Count == 1)
+            {
+                enmityHudAddress = list[0] + enmityHudSignatureOffset;
+
+                if (enmityHudAddress == IntPtr.Zero)
+                {
+                    fail.Add(nameof(enmityHudAddress));
+                    success = false;
+                }
+            }
+            else
+            {
+                enmityHudAddress = IntPtr.Zero;
+                fail.Add(nameof(enmityHudAddress));
+                success = false;
+            }
+
             logger.Log(LogLevel.Debug, "charmapAddress: 0x{0:X}", charmapAddress.ToInt64());
             logger.Log(LogLevel.Debug, "enmityAddress: 0x{0:X}", enmityAddress.ToInt64());
             logger.Log(LogLevel.Debug, "targetAddress: 0x{0:X}", targetAddress.ToInt64());
             logger.Log(LogLevel.Debug, "inCombatAddress: 0x{0:X}", inCombatAddress.ToInt64());
+            logger.Log(LogLevel.Debug, "enmityListAddress: 0x{0:X}", enmityHudAddress.ToInt64());
             Combatant c = GetSelfCombatant();
             if (c != null)
             {
@@ -579,6 +609,90 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
                 return false;
             byte[] bytes = memory.Read8(inCombatAddress, 1);
             return bytes[0] != 0;
+        }
+
+        [StructLayout(LayoutKind.Explicit, Size = 20)]
+        struct EnmityHudEntryMemory
+        {
+            public static int Size => Marshal.SizeOf(typeof(EnmityHudEntryMemory));
+
+            [FieldOffset(0x00)]
+            public uint HPPercent;
+
+            [FieldOffset(0x04)]
+            public uint EnmityPercent;
+
+            [FieldOffset(0x08)]
+            public uint CastPercent;
+
+            [FieldOffset(0x0C)]
+            public uint ID;
+
+            [FieldOffset(0x10)]
+            public uint Unknown01;
+        }
+
+        public override List<EnmityHudEntry> GetEnmityHudEntries()
+        {
+            var entries = new List<EnmityHudEntry>();
+            if (enmityHudAddress == IntPtr.Zero) return entries;
+
+            // Resolve Dynamic Pointers
+            if (DateTimeOffset.UtcNow - lastDateTimeDynamicAddressChecked > TimeSpan.FromSeconds(30))
+            {
+                lastDateTimeDynamicAddressChecked = DateTimeOffset.UtcNow;
+                var tmpEnmityHudDynamicAddress = memory.ReadIntPtr(enmityHudAddress);
+                for (int i = 0; i < enmityHudPointerPath.Length; i++)
+                {
+                    var p = enmityHudPointerPath[i];
+                    tmpEnmityHudDynamicAddress = tmpEnmityHudDynamicAddress + p;
+                    tmpEnmityHudDynamicAddress = memory.ReadIntPtr(tmpEnmityHudDynamicAddress);
+                    if (tmpEnmityHudDynamicAddress == IntPtr.Zero)
+                    {
+                        enmityHudDynamicAddress = IntPtr.Zero;
+                        return entries;
+                    }
+                }
+                enmityHudDynamicAddress = new IntPtr(tmpEnmityHudDynamicAddress.ToInt64());
+            }
+
+            // Get EnmityHud Count, Empty(Min) = 0, Max = 8
+            var count = memory.GetInt32(enmityHudDynamicAddress, enmityHudCountOffset);
+            if (count < 0) count = 0;
+            if (count > 8) count = 8;
+
+            // Get data from memory (all 8 entries)
+            byte[] buffer = memory.GetByteArray(enmityHudDynamicAddress + enmityHudEntryOffset, 8 * EnmityHudEntryMemory.Size);
+
+            // Parse data
+            for (int i = 0; i < count; i++)
+            {
+                entries.Add(GetEnmityHudEntryFromBytes(buffer, i));
+            }
+
+            return entries;
+        }
+
+        public unsafe EnmityHudEntry GetEnmityHudEntryFromBytes(byte[] source, int num = 0)
+        {
+            if (num < 0) throw new ArgumentException();
+            if (num > 8) throw new ArgumentException();
+
+            fixed (byte* p = source)
+            {
+                EnmityHudEntryMemory mem = *(EnmityHudEntryMemory*)&p[num * EnmityHudEntryMemory.Size];
+
+                EnmityHudEntry enmityHudEntry = new EnmityHudEntry()
+                {
+                    Order = num,
+                    ID = mem.ID,
+                    HPPercent = mem.HPPercent > 100 ? 0 : mem.HPPercent,
+                    EnmityPercent = mem.EnmityPercent > 100 ? 0 : mem.EnmityPercent,
+                    CastPercent = mem.CastPercent > 100 ? 0 : mem.CastPercent,
+                };
+
+                return enmityHudEntry;
+            }
         }
     }
 }
