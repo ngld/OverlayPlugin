@@ -322,6 +322,8 @@ namespace RainbowMage.OverlayPlugin
 
             foreach (var preset in _registry.OverlayPresets)
             {
+                if (!preset.IsSharedPreset)
+                    continue;
                 cbOverlay.Items.Add(new
                 {
                     label = preset.Name,

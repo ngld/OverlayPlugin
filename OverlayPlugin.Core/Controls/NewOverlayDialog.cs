@@ -80,6 +80,8 @@ namespace RainbowMage.OverlayPlugin
 
             foreach (var item in registry.OverlayPresets)
             {
+                if (!item.IsOverlayPreset)
+                    continue;
                 cbPreset.Items.Add(item);
             }
 
@@ -265,6 +267,8 @@ namespace RainbowMage.OverlayPlugin
         [JsonIgnore]
         public int[] Size { get; set; }
         public bool Locked { get; set; }
+        public bool IsOverlayPreset { get; set; } = true;
+        public bool IsSharedPreset { get; set; } = true;
         public List<string> Supports { get; set; }
 
         [JsonExtensionData]

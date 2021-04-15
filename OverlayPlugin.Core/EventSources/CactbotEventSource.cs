@@ -742,13 +742,15 @@ namespace RainbowMage.OverlayPlugin.EventSources
             watchers = null;
         }
 
-        struct OverlayPreset : IOverlayPreset
+        class OverlayPreset : IOverlayPreset
         {
             public string Name { get; set; }
             public string Type { get { return "MiniParse"; } }
             public string Url { get; set; }
             public int[] Size { get; set; }
             public bool Locked { get; set; }
+            public bool IsOverlayPreset { get; set; } = true;
+            public bool IsSharedPreset { get; set; } = true;
             public List<string> Supports { get { return new List<string> { "modern" }; } }
         }
 
