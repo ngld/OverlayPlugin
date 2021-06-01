@@ -586,6 +586,12 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
             return result;
         }
 
+        // Satisfying abstract method.
+        public override List<TargetableEnemyEntry> GetTargetableEnemyList(List<Combatant> combatantList)
+        {
+            return new List<TargetableEnemyEntry>();
+        }
+
         public unsafe List<EffectEntry> GetEffectEntries(byte* source, ObjectType type, uint mycharID)
         {
             var result = new List<EffectEntry>();

@@ -20,7 +20,7 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
         private IntPtr inCombatAddress = IntPtr.Zero;
 
         private const string charmapSignature = "48c1ea0381faa7010000????8bc2488d0d";
-        private const string targetSignature = "83E901740832C04883C4205BC3488D0D"; 
+        private const string targetSignature = "83E901740832C04883C4205BC3488D0D";
         private const string enmitySignature = "83f9ff7412448b048e8bd3488d0d";
         private const string inCombatSignature = "84c07425450fb6c7488d0d";
 
@@ -303,6 +303,18 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
             [FieldOffset(0x8C)]
             public byte Type;
 
+            [FieldOffset(0x1980)]
+            public byte MonsterType;
+
+            [FieldOffset(0x94)]
+            public byte Status;
+
+            [FieldOffset(0x104)]
+            public int ModelStatus;
+
+            [FieldOffset(0x19A0)]
+            public byte AggressionStatus;
+
             [FieldOffset(0x92)]
             public byte EffectiveDistance;
 
@@ -372,6 +384,11 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
                     ID = mem.ID,
                     OwnerID = mem.OwnerID == emptyID ? 0 : mem.OwnerID,
                     Type = (ObjectType)mem.Type,
+                    MonsterType = (MonsterType)mem.MonsterType,
+                    Status = (ObjectStatus)mem.Status,
+                    ModelStatus = (ModelStatus)mem.ModelStatus,
+                    // Normalize all possible aggression statuses into the basic 4 ones.
+                    AggressionStatus = (AggressionStatus)(mem.AggressionStatus - (mem.AggressionStatus / 4) * 4),
                     EffectiveDistance = mem.EffectiveDistance,
                     PosX = mem.PosX,
                     PosY = mem.PosY,
@@ -382,6 +399,9 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
                     MaxHP = mem.MaxHP,
                     Effects = exceptEffects ? new List<EffectEntry>() : GetEffectEntries(mem.Effects, (ObjectType)mem.Type, mycharID),
                 };
+                combatant.IsTargetable = 
+                    (combatant.ModelStatus == ModelStatus.Visible) 
+                    && ((combatant.Status == ObjectStatus.NormalActorStatus) || (combatant.Status == ObjectStatus.NormalSubActorStatus));
                 if (combatant.Type != ObjectType.PC && combatant.Type != ObjectType.Monster)
                 {
                     // Other types have garbage memory for hp.
@@ -552,6 +572,7 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
                     // This is likely because we're reading the memory for the aggro sidebar.
                     HateRate = (int)e.Enmity,
                     isCurrentTarget = (e.ID == currentTargetID),
+                    IsTargetable = c.IsTargetable,
                     Name = c.Name,
                     MaxHP = c.MaxHP,
                     CurrentHP = c.CurrentHP,
@@ -581,6 +602,28 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
                 result.Add(entry);
             }
             return result;
+        }
+
+        public override List<TargetableEnemyEntry> GetTargetableEnemyList(List<Combatant> combatantList)
+        {
+            var enemyList = new List<TargetableEnemyEntry>();
+            for (int i = 0; i != combatantList.Count; ++i)
+            {
+                var combatant = combatantList[i];
+                bool isHostile = (combatant.Type == ObjectType.Monster) && (combatant.MonsterType == MonsterType.Hostile);
+                if (!isHostile || !combatant.IsTargetable) continue;
+                var entry = new TargetableEnemyEntry
+                {
+                    ID = combatant.ID,
+                    Name = combatant.Name,
+                    CurrentHP = combatant.CurrentHP,
+                    MaxHP = combatant.CurrentHP,
+                    IsEngaged = (combatant.AggressionStatus >= AggressionStatus.EngagedPassive),
+                    EffectiveDistance = combatant.EffectiveDistance
+                };
+                enemyList.Add(entry);
+            }
+            return enemyList;
         }
 
         public unsafe List<EffectEntry> GetEffectEntries(byte* source, ObjectType type, uint mycharID)
