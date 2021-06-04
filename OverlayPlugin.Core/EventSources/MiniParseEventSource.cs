@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define TRACE
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -622,15 +624,8 @@ namespace RainbowMage.OverlayPlugin.EventSources
             Dictionary<string, string> encounter = null;
             List<KeyValuePair<CombatantData, Dictionary<string, string>>> combatant = null;
 
-            var encounterTask = Task.Run(() =>
-            {
-                encounter = GetEncounterDictionary(allies);
-            });
-            var combatantTask = Task.Run(() =>
-            {
-                combatant = GetCombatantList(allies);
-            });
-            Task.WaitAll(encounterTask, combatantTask);
+            combatant = GetCombatantList(allies);
+            encounter = GetEncounterDictionary(allies);
 
             if (encounter == null || combatant == null) return new JObject();
 
@@ -685,7 +680,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
 
             obj["isActive"] = ActGlobals.oFormActMain.ActiveZone.ActiveEncounter.Active ? "true" : "false";
 
-#if TRACE
+#if DEBUG
             stopwatch.Stop();
             Log(LogLevel.Trace, "CreateUpdateScript: {0} msec", stopwatch.Elapsed.TotalMilliseconds);
 #endif
@@ -694,14 +689,14 @@ namespace RainbowMage.OverlayPlugin.EventSources
 
         private List<KeyValuePair<CombatantData, Dictionary<string, string>>> GetCombatantList(List<CombatantData> allies)
         {
-#if TRACE
+#if DEBUG
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 #endif
 
             var combatantList = new List<KeyValuePair<CombatantData, Dictionary<string, string>>>();
             Parallel.ForEach(allies, (ally) =>
-            //foreach (var ally in allies)
+            // foreach (var ally in allies)
             {
                 var valueDict = new Dictionary<string, string>();
                 foreach (var exportValuePair in CombatantData.ExportVariables)
@@ -747,7 +742,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
             }
             );
 
-#if TRACE
+#if DEBUG
             stopwatch.Stop();
             Log(LogLevel.Trace, "GetCombatantList: {0} msec", stopwatch.Elapsed.TotalMilliseconds);
 #endif
@@ -757,7 +752,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
 
         private Dictionary<string, string> GetEncounterDictionary(List<CombatantData> allies)
         {
-#if TRACE
+#if DEBUG
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 #endif
@@ -797,7 +792,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
                 }
             }
 
-#if TRACE
+#if DEBUG
             stopwatch.Stop();
             Log(LogLevel.Trace, "GetEncounterDictionary: {0} msec", stopwatch.Elapsed.TotalMilliseconds);
 #endif

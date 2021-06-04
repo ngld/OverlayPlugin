@@ -29,23 +29,24 @@ namespace RainbowMage.OverlayPlugin
                         "Overheal",
                         "Amount of healing that made flood over 100% of health.",
                         (Data, ExtraFormat) =>
-                        (
-                            (
-                                Data.Items[outH].Items.ToList().Where
-                                (
-                                    x => x.Key == "All"
-                                ).Sum
-                                (
-                                    x => x.Value.Items.ToList().Where
-                                    (
-                                        y => y.Tags.ContainsKey("overheal")
-                                    ).Sum
-                                    (
-                                        y => Convert.ToInt64(y.Tags["overheal"])
-                                    )
-                                )
-                            ).ToString()
-                        )
+                        { 
+                            if (!Data.Items[outH].Items.TryGetValue("All", out AttackType attack))
+                            {
+                                return "0";
+                            }
+
+                            long sum = 0;
+                            var swings = attack.Items;
+                            for (var i = 0; i < swings.Count; i++)
+                            {
+                                if (swings[i].Tags.TryGetValue("overheal", out object value))
+                                {
+                                    sum += Convert.ToInt64(value);
+                                }
+                            }
+
+                            return sum.ToString();
+                        }
                     )
                 );
             }
@@ -61,29 +62,24 @@ namespace RainbowMage.OverlayPlugin
                         "Damage Shield",
                         "Damage blocked by Shield skills of healer.",
                         (Data, ExtraFormat) =>
-                        (
-                            (
-                                Data.Items[outH].Items.ToList().Where
-                                (
-                                    x => x.Key == "All"
-                                ).Sum
-                                (
-                                    x => x.Value.Items.Where
-                                    (
-                                        y =>
-                                        {
-                                            if (y.DamageType == "DamageShield")
-                                                return true;
-                                            else
-                                                return false;
-                                        }
-                                    ).Sum
-                                    (
-                                        y => Convert.ToInt64(y.Damage)
-                                    )
-                                )
-                            ).ToString()
-                        )
+                        {
+                            if (!Data.Items[outH].Items.TryGetValue("All", out AttackType attack))
+                            {
+                                return "0";
+                            }
+
+                            long sum = 0;
+                            var swings = attack.Items;
+                            for (var i = 0; i < swings.Count; i++)
+                            {
+                                if (swings[i].DamageType == "DamageShield")
+                                {
+                                    sum += swings[i].Damage;
+                                }
+                            }
+
+                            return sum.ToString();
+                        }
                     )
                 );
             }
@@ -99,23 +95,24 @@ namespace RainbowMage.OverlayPlugin
                         "Healed by Absorbing",
                         "Amount of heal, done by absorbing.",
                         (Data, ExtraFormat) =>
-                        (
-                            (
-                                Data.Items[outH].Items.ToList().Where
-                                (
-                                    x => x.Key == "All"
-                                ).Sum
-                                (
-                                    x => x.Value.Items.Where
-                                    (
-                                        y => y.DamageType == "Absorb"
-                                    ).Sum
-                                    (
-                                        y => Convert.ToInt64(y.Damage)
-                                    )
-                                )
-                            ).ToString()
-                        )
+                        {
+                            if (!Data.Items[outH].Items.TryGetValue("All", out AttackType attack))
+                            {
+                                return "0";
+                            }
+
+                            long sum = 0;
+                            var swings = attack.Items;
+                            for (var i = 0; i < swings.Count; i++)
+                            {
+                                if (swings[i].DamageType == "Absorb")
+                                {
+                                    sum += swings[i].Damage;
+                                }
+                            }
+
+                            return sum.ToString();
+                        }
                     )
                 );
             }
