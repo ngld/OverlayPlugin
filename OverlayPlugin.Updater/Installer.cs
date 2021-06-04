@@ -42,12 +42,13 @@ namespace RainbowMage.OverlayPlugin.Updater
             return await Task.Run(() =>
             {
                 var scVersion = Assembly.Load("SharpCompress").GetName().Version;
-                //if (scVersion < Version.Parse("0.24.0"))
-                //{
-                //    inst._display.Log(Resources.SharpCompressOutdatedError);
-                //    inst._display.UpdateStatus(0, Resources.StatusError);
-                //    return false;
-                //}
+                inst._display.Log("Current SharpCompress version: " + scVersion.ToString());
+                if (scVersion < Version.Parse("0.21.1"))
+                {
+                    inst._display.Log(Resources.SharpCompressOutdatedError);
+                    inst._display.UpdateStatus(0, Resources.StatusError);
+                    return false;
+                }
 
                 var result = false;
                 var archivePath = Path.Combine(inst.TempDir, "update.file");
