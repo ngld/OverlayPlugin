@@ -70,7 +70,7 @@ namespace RainbowMage.OverlayPlugin
             if (repository != null)
                 return repository;
 
-            var FFXIV = ActGlobals.oFormActMain.ActPlugins.FirstOrDefault(x => x.lblPluginTitle.Text == "FFXIV_ACT_Plugin.dll");
+            var FFXIV = ActGlobals.oFormActMain.ActPlugins.FirstOrDefault(x => x.lblPluginTitle.Text.StartsWith("FFXIV_ACT_Plugin"));
             if (FFXIV != null && FFXIV.pluginObj != null)
             {
                 try
@@ -91,7 +91,7 @@ namespace RainbowMage.OverlayPlugin
             if (subscription != null)
                 return subscription;
 
-            var FFXIV = ActGlobals.oFormActMain.ActPlugins.FirstOrDefault(x => x.lblPluginTitle.Text == "FFXIV_ACT_Plugin.dll");
+            var FFXIV = ActGlobals.oFormActMain.ActPlugins.FirstOrDefault(x => x.lblPluginTitle.Text.StartsWith("FFXIV_ACT_Plugin"));
             if (FFXIV != null && FFXIV.pluginObj != null)
             {
                 try
