@@ -92,16 +92,16 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="cef.redist.x64">
-      <Version>95.7.14</Version>
+      <Version>96.0.14</Version>
     </PackageReference>
     <PackageReference Include="cef.redist.x86">
-      <Version>95.7.14</Version>
+      <Version>96.0.14</Version>
     </PackageReference>
     <PackageReference Include="CefSharp.Common">
-      <Version>95.7.141</Version>
+      <Version>96.0.141</Version>
     </PackageReference>
     <PackageReference Include="CefSharp.OffScreen">
-      <Version>95.7.141</Version>
+      <Version>96.0.141</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
