@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>RainbowMage.OverlayPlugin.Updater</RootNamespace>
     <AssemblyName>OverlayPlugin.Updater</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
