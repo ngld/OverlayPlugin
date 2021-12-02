@@ -98,10 +98,10 @@
       <Version>96.0.14</Version>
     </PackageReference>
     <PackageReference Include="CefSharp.Common">
-      <Version>96.0.141</Version>
+      <Version>96.0.142</Version>
     </PackageReference>
     <PackageReference Include="CefSharp.OffScreen">
-      <Version>96.0.141</Version>
+      <Version>96.0.142</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
