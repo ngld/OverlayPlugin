@@ -7,13 +7,13 @@ deps = {
         'url': 'https://github.com/EQAditu/AdvancedCombatTracker/releases/download/3.5.0.273/ACTv3.zip',
         'dest': 'Thirdparty/ACT',
         'strip': 0,
-        'hash': ['sha256', 'b69281760ae3ceb33d8b45a299c9ed5c90668544664b9ade373f548dbb0e86d6'],
+        'hash': ['sha256', 'adf13a38d0938ce90f8e674f8365b227d933b91636ddf72b26c85702f6e3b808'],
     },
     'FFXIV_ACT_Plugin': {
         'url': 'https://github.com/ravahn/FFXIV_ACT_Plugin/raw/master/Releases/FFXIV_ACT_Plugin_SDK_2.6.2.8.zip',
         'dest': 'Thirdparty/FFXIV_ACT_Plugin',
         'strip': 0,
-        'hash': ['sha256', '7d6726b370195303082872a3802df54284df5442046061cee8533d940ccc2df5'],
+        'hash': ['sha256', '437579fba7e9d848ffb7bae9cedc59a61749429de488e6df0dcd3885f5b6e93d'],
     },
     'curl': {
         'url': 'https://curl.haxx.se/download/curl-7.70.0.tar.xz',
