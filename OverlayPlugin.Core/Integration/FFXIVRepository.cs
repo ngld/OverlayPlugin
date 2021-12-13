@@ -246,7 +246,10 @@ namespace RainbowMage.OverlayPlugin
         {
             var repo = GetRepository();
             if (repo == null)
-                return Language.Unknown;
+            {
+                // Defaults to English
+                return Language.English;
+            }
             return repo.GetSelectedLanguageID();
         }
 
