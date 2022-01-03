@@ -1,6 +1,6 @@
 try {
     # This assumes Visual Studio 2019 is installed in C:. You might have to change this depending on your system.
-    $VS_PATH = "C:\Program Files\Microsoft Visual Studio\2022\Community"
+    $VS_PATH = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community"
 
     if ( -not (Test-Path "$VS_PATH")) {
         echo "Error: VS_PATH isn't set correctly! Update the variable in build.ps1 for your system."
@@ -48,13 +48,13 @@ try {
 
     echo "==> Building..."
 
-    msbuild -p:Configuration=Release -p:Platform=x64 "OverlayPlugin.sln" -t:Restore
-    msbuild -p:Configuration=Release -p:Platform=x64 "OverlayPlugin.sln"
+    msbuild -p:Configuration=Debug -p:Platform=x64 "OverlayPlugin.sln" -t:Restore
+    msbuild -p:Configuration=Debug -p:Platform=x64 "OverlayPlugin.sln"
     if (-not $?) { exit 1 }
 
     echo "==> Building archive..."
 
-    cd out\Release
+    cd out\Debug
 
     if (Test-Path OverlayPlugin) { rm -Recurse OverlayPlugin }
     mkdir OverlayPlugin\libs

@@ -333,7 +333,7 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
             [FieldOffset(0x8C)]
             public byte Type;
 
-            [FieldOffset(0x1980)]
+            [FieldOffset(0x19C3)]
             public byte MonsterType;
 
             [FieldOffset(0x94)]
@@ -342,7 +342,7 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
             [FieldOffset(0x104)]
             public int ModelStatus;
 
-            [FieldOffset(0x19A0)]
+            [FieldOffset(0x19DF)]
             public byte AggressionStatus;
 
             [FieldOffset(0x92)]
