@@ -229,7 +229,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
                     {
                         if (!key.StartsWith("overlay#")) continue;
 
-                        var uuid = key.Substring(8, 36);
+                        var uuid = key.Substring(8, key.LastIndexOf('#')-8);
                         if (!overlayUUIDs.Contains(uuid))
                         {
                             obsoleteKeys.Add(key);
