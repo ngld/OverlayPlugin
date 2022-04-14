@@ -77,6 +77,12 @@
     "size": [700, 300],
     "supports": ["modern"]
   },
+   "MopiMopi": {
+    "type": "Evil Eeyore (remake of rdmty)",
+    "url": "https://christianallred.github.io/ffxiv-overlay/",
+    "size": [600, 500],
+    "supports": ["modern","actws"]
+  },
   "Klondike": {
     "type": "MiniParse",
     "url": "https://kalilistic.github.io/klondike/",
