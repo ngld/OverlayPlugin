@@ -70,11 +70,11 @@ namespace RainbowMage.OverlayPlugin.EventSources
         {
             if (repository.GetLanguage() == FFXIV_ACT_Plugin.Common.Language.Chinese)
             {
-                memoryCandidates = new List<EnmityMemory>() { new EnmityMemory55(container) };
+                memoryCandidates = new List<EnmityMemory>() { new EnmityMemory60(container) };
             }
             else if (repository.GetLanguage() == FFXIV_ACT_Plugin.Common.Language.Korean)
             {
-                memoryCandidates = new List<EnmityMemory>() { new EnmityMemory52(container) };
+                memoryCandidates = new List<EnmityMemory>() { new EnmityMemory55(container) };
             }
             else
             {
