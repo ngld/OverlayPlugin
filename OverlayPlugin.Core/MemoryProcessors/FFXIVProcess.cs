@@ -133,6 +133,13 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
               job == EntityJob.CUL;
         }
 
+        static internal string ToProperCase(string name)
+        {
+            System.Globalization.CultureInfo cultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
+            System.Globalization.TextInfo textInfo = cultureInfo.TextInfo;
+            return textInfo.ToTitleCase(name);
+        }
+
         [Serializable]
         public class EntityData
         {
