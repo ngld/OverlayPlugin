@@ -58,7 +58,8 @@ namespace RainbowMage.OverlayPlugin.EventSources
             "PosX",
             "PosY",
             "PosZ",
-            "Heading"
+            "Heading",
+            "Effects"
         };
 
         private Dictionary<string, System.Reflection.PropertyInfo> CachedCombatantPropertyInfos
