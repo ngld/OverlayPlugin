@@ -13,6 +13,8 @@ namespace RainbowMage.OverlayPlugin
         string Url { get; }
         int[] Size { get; }
         bool Locked { get; }
+        bool IsOverlayPreset { get; }
+        bool IsSharedPreset { get; }
         List<string> Supports { get; }
     }
 }
