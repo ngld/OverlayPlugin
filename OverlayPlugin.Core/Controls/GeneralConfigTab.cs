@@ -132,7 +132,7 @@ namespace RainbowMage.OverlayPlugin
             {
                 var asm = Assembly.Load("CactbotEventSource");
                 var checkerType = asm.GetType("Cactbot.VersionChecker");
-                var loggerType = asm.GetType("Cactbot.ILogger");
+                var loggerType = typeof(ILogger);
                 var configType = asm.GetType("Cactbot.CactbotEventSourceConfig");
 
                 var esList = container.Resolve<Registry>().EventSources;
