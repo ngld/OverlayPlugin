@@ -471,7 +471,7 @@ tunnels:
 
                     var p = new Process();
                     p.StartInfo.FileName = ngrokPath;
-                    p.StartInfo.Arguments = "start -config=\"" + ngrokConfigPath + "\" wsserver";
+                    p.StartInfo.Arguments = "start --config=\"" + ngrokConfigPath + "\" wsserver";
                     p.StartInfo.UseShellExecute = false;
                     p.StartInfo.CreateNoWindow = true;
                     p.StartInfo.RedirectStandardError = true;
@@ -606,8 +606,8 @@ tunnels:
                 }
 
                 var arch = Environment.Is64BitOperatingSystem ? "amd64" : "386";
-                // <a id="dl-windows-amd64" href="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip" class="download-btn"
-                var match = Regex.Match(dlPage, " href=\"(https://bin.equinox.io/c/[^/]+/ngrok-stable-windows-" + arch + "\\.zip)\"");
+                // <a id="windows-dl-link" class="[...]" href="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip"
+                var match = Regex.Match(dlPage, " href=\"(https://bin.equinox.io/c/[^/]+/ngrok-v3-stable-windows-" + arch + "\\.zip)\"");
                 if (match == Match.Empty)
                 {
                     simpLogBox.AppendText("Failed to find version on the download page! Please notify ngld or some other dev working on OverlayPlugin.\r\n");
