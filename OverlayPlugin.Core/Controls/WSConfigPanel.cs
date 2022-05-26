@@ -471,7 +471,7 @@ tunnels:
 
                     var p = new Process();
                     p.StartInfo.FileName = ngrokPath;
-                    p.StartInfo.Arguments = "start -config=\"" + ngrokConfigPath + "\" wsserver";
+                    p.StartInfo.Arguments = "start --config=\"" + ngrokConfigPath + "\" wsserver";
                     p.StartInfo.UseShellExecute = false;
                     p.StartInfo.CreateNoWindow = true;
                     p.StartInfo.RedirectStandardError = true;
